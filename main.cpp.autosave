@@ -1,0 +1,56 @@
+#include <iostream>
+#include "mixednumber.h"
+#include "driverprogram.cpp"
+
+using namespace std;
+
+
+int main()
+{
+//    driverProgram();
+    stringstream ss;
+    string input;
+
+    while(1)
+    {
+        mixedNumber a,b,c;
+        char junk = ' ';
+        cout << "Please enter an operation between two mixed numbers: ";
+        getline(cin, input);
+        ss << input;
+
+        ss >> a;
+
+        if(!(ss >> junk))
+            cout << "a = " << a << endl;
+        else
+        {
+            ss >> b;
+
+            switch(junk)
+            {
+                case '+':
+                    c=a+b;
+                    cout << "a+b = " << c << endl;
+                    break;
+                case '-':
+                    c=a-b;
+                    cout << "a-b = " << c << endl;
+                    break;
+                case '*':
+                    c=a*b;
+                    cout << "a*b = " << c << endl;
+                    break;
+                case '/':
+                    c=a/b;
+                    cout << "a/b = " << c << endl;
+                    break;
+                default:
+                    cout << endl;
+            }
+        }
+        ss.clear();
+    }
+
+    return 0;
+}

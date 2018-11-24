@@ -1,0 +1,4 @@
+#ifndef MIXEDNUMBER_H
+#define MIXEDNUMBER_H
+
+#endif // MIXEDNUMBER_H

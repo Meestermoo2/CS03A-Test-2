@@ -1,0 +1,4 @@
+#ifndef COMPLEXNUMBER_H
+#define COMPLEXNUMBER_H
+
+#endif // COMPLEXNUMBER_H
