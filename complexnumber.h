@@ -5,6 +5,11 @@
 
 class complexNumber : public mixedNumber
 {
+    enum commands {LET, EVAL, PRINT, LOAD, SAVE, DISPLAY};
+
+    std::map<std::string, complexNumber::commands> commandMap;
+    void initializeMap();
+
     public:
 
         complexNumber();

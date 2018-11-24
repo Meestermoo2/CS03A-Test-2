@@ -2,6 +2,7 @@
 #define MIXEDNUMBER_H
 #include <iostream>
 #include <fstream>
+#include <map>
 #include "fraction.h"
 
 enum mixedNumber_ERRORS {improper_mixed};
