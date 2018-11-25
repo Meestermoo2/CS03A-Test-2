@@ -66,3 +66,9 @@ void complexNumber::nukeEveryone()
 {
     imaginary = 0;
 }
+
+mixedNumber complexNumber::getReal()
+{
+    mixedNumber temp(0, num, denom);
+    return temp;
+}
