@@ -2,6 +2,7 @@
 
 complexNumber::complexNumber()
 {
+    imaginary = 0;
 }
 
 complexNumber::~complexNumber()
@@ -14,11 +15,13 @@ complexNumber::complexNumber(const complexNumber &other)
     copy(other);
 }
 
-//complexNumber::complexNumber(mixedNumber real, mixedNumber imaginary)
-//{
-//    num = real.num;
-//    denom = real.denom;
-//}
+complexNumber::complexNumber(mixedNumber realPart, mixedNumber imaginaryPart)
+{
+    num = realPart.getNum();
+    denom = realPart.getDenom();
+
+    imaginary = imaginaryPart;
+}
 
 complexNumber& complexNumber::operator=(const complexNumber &other)
 {
@@ -27,28 +30,30 @@ complexNumber& complexNumber::operator=(const complexNumber &other)
     return *this;
 }
 complexNumber& complexNumber::operator=(const mixedNumber &other)
-{
-    if(this != &other)
-        copy(other);
-    return *this;
+{ // This creates a temp fraction because a mixedNumber can be constructed from its fraction constituents.
+    fraction temp(other);
+    *this = temp;
+    return * this;
 }
 complexNumber& complexNumber::operator=(const fraction &other)
 {
-    if(this != &other)
-        copy(other);
+    num = other.getNum();
+    denom = other.getDenom();
+
+    imaginary = 0;
     return *this;
 }
 complexNumber& complexNumber::operator=(const int &other)
 {
-    if(this != &other)
-        copy(other);
-    return *this;
+    fraction temp(other);
+    *this = temp;
+    return * this;
 }
 complexNumber& complexNumber::operator=(const double &other)
 {
-    if(this != &other)
-        copy(other);
-    return *this;
+    fraction temp(other);
+    *this = temp;
+    return * this;
 }
 
 void complexNumber::copy(const complexNumber &other)
