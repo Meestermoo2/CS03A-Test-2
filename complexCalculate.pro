@@ -10,9 +10,11 @@ SOURCES += \
     fraction.cpp \
     friendoffraction.cpp \
     friendofmixednumber.cpp \
-    friendofcomplexnumber.cpp
+    friendofcomplexnumber.cpp \
+    memories.cpp
 
 HEADERS += \
     fraction.h \
     mixednumber.h \
-    complexnumber.h
+    complexnumber.h \
+    memories.h
