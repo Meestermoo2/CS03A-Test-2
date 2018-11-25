@@ -152,8 +152,8 @@ fraction fraction::squareRoot() const
 //    return guess;
 
     fraction temp;
-    temp.num = sqrt(*this->num);
-    temp.denom = sqrt(*this->denom);
+    temp.num = sqrt(this->num);
+    temp.denom = sqrt(this->denom);
 
     return temp;
 }
