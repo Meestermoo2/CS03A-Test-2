@@ -11,7 +11,8 @@ SOURCES += \
     friendoffraction.cpp \
     friendofmixednumber.cpp \
     friendofcomplexnumber.cpp \
-    memories.cpp
+    memories.cpp \
+    friendofmemories.cpp
 
 HEADERS += \
     fraction.h \

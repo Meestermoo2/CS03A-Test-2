@@ -5,11 +5,6 @@
 
 class complexNumber : public mixedNumber
 {
-    enum commands {LET, EVAL, PRINT, LOAD, SAVE, DISPLAY};
-
-    std::map<std::string, complexNumber::commands> commandMap;
-    void initializeMap();
-
     public:
 
         complexNumber();
@@ -36,6 +31,12 @@ class complexNumber : public mixedNumber
 
         friend
         complexNumber operator*(const complexNumber &x, const complexNumber &y);
+
+        friend
+        complexNumber operator/(const complexNumber &x, const complexNumber &y);
+
+        friend
+        complexNumber operator^(const complexNumber &x, const complexNumber &y);
 
         friend
         std::istream& operator>>(std::istream &in, complexNumber&c);

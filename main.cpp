@@ -1,5 +1,5 @@
 #include <iostream>
-#include "complexnumber.h"
+#include "memories.h"
 
 using namespace std;
 
@@ -56,9 +56,20 @@ int main()
 
     complexNumber c(a,b);
 
+    memories d;
+
     cout << "The complex Number is: " << c << endl;
 
+    cout << "Here are your memories: " << d << endl;
 
+    cout << "testing display function ";
+    d.display();
+
+    cout << "testing print function ";
+    d.print("A");
+
+    cout << "testign save function ";
+    d.save("hello");
 
     return 0;
 }
