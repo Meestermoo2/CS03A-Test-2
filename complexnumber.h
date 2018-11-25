@@ -14,7 +14,9 @@ class complexNumber : public mixedNumber
 
         mixedNumber getReal() const;
         mixedNumber getImaginary() const;
+
         void setValue(mixedNumber realPart, mixedNumber imaginaryPart);
+        complexNumber conjugate();
 
         complexNumber& operator=(const complexNumber &other);
         complexNumber& operator=(const mixedNumber &other);

@@ -7,8 +7,13 @@ std::ostream& operator<<(std::ostream &out, complexNumber&c)
 
     out << real;
 
-    if (c.imaginary.getNum() != 0)
-        out  << " + " << c.imaginary << "i";
+
+    if (c.imaginary != 0)
+    {
+        if (c.imaginary > 0)
+            out << "+";
+        out << c.imaginary << "i";
+    }
 
     return out;
 }
@@ -21,7 +26,6 @@ complexNumber operator+(const complexNumber &x, const complexNumber &y)
 {
     complexNumber temp;
     mixedNumber realsum, imagsum;
-
     realsum = x.getReal()+y.getReal();
     imagsum = x.getImaginary()+y.getImaginary();
 
@@ -62,6 +66,8 @@ complexNumber operator*(const complexNumber &x, const complexNumber &y)
 complexNumber operator/(const complexNumber &x, const complexNumber &y)
 {
     complexNumber temp;
+
+
     return temp;
 }
 

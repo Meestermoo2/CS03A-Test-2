@@ -94,3 +94,10 @@ void complexNumber::setValue(mixedNumber realPart, mixedNumber imaginaryPart)
     *this = realPart;
     imaginary = imaginaryPart;
 }
+
+complexNumber complexNumber::conjugate()
+{
+    imaginary *= -1;
+    return *this;
+}
+

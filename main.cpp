@@ -78,6 +78,9 @@ int main()
     cout << "C-D = " << f << endl;
     g=c*d;
     cout << "C*D = " << g << endl;
+    cout << c << endl;
+    c.conjugate();
+    cout << c << endl;
 
 
     return 0;
