@@ -63,11 +63,11 @@ int main()
 //    cout << "testign save function ";
 //    d.save("hello");
 
-    mixedNumber a(2,1,2),b(3,3,4);
+    mixedNumber a(2,1,2),b(3,3,4), j(2), k(1), l;
     complexNumber c(a,b);
     complexNumber d(b,a);
 
-    complexNumber e,f,g,h;
+    complexNumber e,f,g,h(j,k);
 
     cout << "C = " << c << endl;
     cout << "D = " << d << endl;
@@ -81,6 +81,14 @@ int main()
     cout << c << endl;
     c.conjugate();
     cout << c << endl;
+    cout << "l is equal to: " << h << endl;
+
+    l = h.magnitude();
+    cout << "The magnitude of l is " << l << endl;
+
+
+
+
 
 
     return 0;

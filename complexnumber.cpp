@@ -101,3 +101,26 @@ complexNumber complexNumber::conjugate()
     return *this;
 }
 
+mixedNumber complexNumber::magnitude()
+{
+    mixedNumber temp, temp2, square;
+    mixedNumber a,b,c;
+
+    temp = *this;
+    temp2 = imaginary;
+
+    std::cout << "Temp: " << temp << std::endl;
+    std::cout << "Temp2: " << temp2 << std::endl;
+
+    a = temp^2;
+    b= temp2^2;
+
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+
+    square = a + b;
+
+    std::cout << "square: " << square << std::endl;
+
+    return square;
+}

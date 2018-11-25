@@ -69,9 +69,6 @@ void mixedNumber::setValues(int w, int n, int d)
     if (w < 0)
         d *= -1;
 
-    if (d<=n)
-        throw improper_mixed;
-
     fraction::setValue(w*d + n, d);
 }
 
