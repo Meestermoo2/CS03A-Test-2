@@ -52,8 +52,6 @@ int main()
 //        ss.clear();
 //    }
 
-//    memories d;
-
 //    cout << "Here are your memories: " << d << endl;
 
 //    cout << "testing display function ";

@@ -18,15 +18,16 @@ class memories
 
         void print(const std::string &arg);
         void save(std::string arg);
+        complexNumber library[26];
 
         friend
-        std::ostream& operator<<(std::ostream& out, const memories &other);
+        std::ostream& operator<<(std::ostream& out, memories &other);
 
         friend
         std::istream& operator>>(std::istream& in, memories &other);
 
     private:
-        complexNumber library[26];
+//        complexNumber library[26];
         void let(const std::string &arg);
         void exit(const std::string &arg);
 //        void print(const std::string &arg);

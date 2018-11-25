@@ -1,6 +1,6 @@
 #include "memories.h"
 
-std::ostream& operator<<(std::ostream& out, const memories &m)
+std::ostream& operator<<(std::ostream& out, memories &m)
 {
     for(unsigned int i = 0; i < 26; ++i)
     {
