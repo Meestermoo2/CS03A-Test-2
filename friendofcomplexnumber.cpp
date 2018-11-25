@@ -21,7 +21,7 @@ complexNumber operator+(const complexNumber &x, const complexNumber &y)
 {
     complexNumber temp;
     mixedNumber realsum, imagsum;
-
+    std::cout << "This is a test";
     realsum = x.getReal()+y.getReal();
     imagsum = x.getImaginary()+y.getImaginary();
 
@@ -35,8 +35,8 @@ complexNumber operator-(const complexNumber &x, const complexNumber &y)
     complexNumber temp;
     mixedNumber realsum, imagsum;
 
-    realsum = x.getReal()+y.getReal();
-    imagsum = x.getImaginary()+y.getImaginary();
+    realsum = x.getReal()-y.getReal();
+    imagsum = x.getImaginary()-y.getImaginary();
 
     temp.setValue(realsum, imagsum);
 
