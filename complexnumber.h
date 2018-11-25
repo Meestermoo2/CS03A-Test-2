@@ -9,12 +9,11 @@ class complexNumber : public mixedNumber
 
         complexNumber();
         ~complexNumber();
-
         complexNumber(mixedNumber realPart, mixedNumber imaginaryPart);
         complexNumber(const complexNumber &other);
 
         mixedNumber getReal() const;
-        mixedNumber getImaginary();
+        mixedNumber getImaginary() const;
         void setValue(mixedNumber realPart, mixedNumber imaginaryPart);
 
         complexNumber& operator=(const complexNumber &other);

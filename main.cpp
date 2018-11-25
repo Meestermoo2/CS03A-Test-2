@@ -52,18 +52,26 @@ int main()
 //        ss.clear();
 //    }
 
-    memories d;
+//    memories d;
 
-    cout << "Here are your memories: " << d << endl;
+//    cout << "Here are your memories: " << d << endl;
 
-    cout << "testing display function ";
-    d.display();
+//    cout << "testing display function ";
+//    d.display();
 
-    cout << "testing print function ";
-    d.print("A");
+//    cout << "testing print function ";
+//    d.print("A");
 
-    cout << "testign save function ";
-    d.save("hello");
+//    cout << "testign save function ";
+//    d.save("hello");
+
+    mixedNumber a(0,3,4),b(3,1,4);
+    complexNumber c(a,b);
+    complexNumber d(b,a);
+
+    c = c+d;
+
+    cout << c << endl;
 
     return 0;
 }

@@ -19,11 +19,13 @@ std::istream& operator>>(std::istream &in, complexNumber&c)
 }
 complexNumber operator+(const complexNumber &x, const complexNumber &y)
 {
-//    complexNumber temp(x.getReal()+y.getReal(), x.imaginary+y.imaginary);
-//        return temp;
     complexNumber temp;
+    mixedNumber realsum, imagsum;
 
-    temp.imaginary = x.imaginary + y.imaginary;
+    realsum = x.getReal()+y.getReal();
+    imagsum = x.getImaginary()+y.getImaginary();
+
+    temp.setValue(realsum, imagsum);
 
     return temp;
 }
@@ -31,8 +33,12 @@ complexNumber operator+(const complexNumber &x, const complexNumber &y)
 complexNumber operator-(const complexNumber &x, const complexNumber &y)
 {
     complexNumber temp;
+    mixedNumber realsum, imagsum;
 
-    temp.imaginary = x.imaginary + y.imaginary;
+    realsum = x.getReal()+y.getReal();
+    imagsum = x.getImaginary()+y.getImaginary();
+
+    temp.setValue(realsum, imagsum);
 
     return temp;
 }
@@ -40,9 +46,15 @@ complexNumber operator-(const complexNumber &x, const complexNumber &y)
 complexNumber operator*(const complexNumber &x, const complexNumber &y)
 {
     complexNumber temp;
+    mixedNumber realsum, imagsum;
 
+    realsum = (x.getReal()*y.getReal())-
+                 (x.getImaginary()*y.getImaginary());
 
-    temp.imaginary = x.imaginary + y.imaginary;
+    imagsum = (x.getReal()*y.getImaginary())+
+                 (y.getReal()*x.getImaginary());
+
+    temp.setValue(realsum,imagsum);
 
     return temp;
 }
@@ -50,18 +62,11 @@ complexNumber operator*(const complexNumber &x, const complexNumber &y)
 complexNumber operator/(const complexNumber &x, const complexNumber &y)
 {
     complexNumber temp;
-
-    temp.imaginary = x.imaginary + y.imaginary;
-
     return temp;
 }
 
 complexNumber operator^(const complexNumber &x, const complexNumber &y)
 {
     complexNumber temp;
-
-    temp.imaginary = x.imaginary + y.imaginary;
-
     return temp;
-
 }

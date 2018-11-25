@@ -83,3 +83,14 @@ mixedNumber complexNumber::getReal() const
     mixedNumber temp(0, num, denom);
     return temp;
 }
+
+mixedNumber complexNumber::getImaginary() const
+{
+    return imaginary;
+}
+
+void complexNumber::setValue(mixedNumber realPart, mixedNumber imaginaryPart)
+{
+    *this = realPart;
+    imaginary = imaginaryPart;
+}
