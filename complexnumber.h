@@ -29,6 +29,15 @@ class complexNumber : public mixedNumber
         complexNumber& operator=(const int &other);
 
         friend
+        complexNumber operator+(const complexNumber &x, const complexNumber &y);
+
+        friend
+        complexNumber operator-(const complexNumber &x, const complexNumber &y);
+
+        friend
+        complexNumber operator*(const complexNumber &x, const complexNumber &y);
+
+        friend
         std::istream& operator>>(std::istream &in, complexNumber&c);
 
         friend
