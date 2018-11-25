@@ -2,6 +2,7 @@
 
 complexNumber::complexNumber()
 {
+    imaginary = 0;
 }
 
 complexNumber::~complexNumber()
@@ -22,44 +23,40 @@ complexNumber::complexNumber(mixedNumber realPart, mixedNumber imaginaryPart)
     imaginary = imaginaryPart;
 }
 
-//complexNumber& complexNumber::operator=(const complexNumber &other)
-//{
-//    if(this != &other)
-//        copy(other);
-//    return *this;
-//}
-//complexNumber& complexNumber::operator=(const mixedNumber &other)
-//{
-//    if(this != &other)
-//        copy(other);
-//    return *this;
-//}
-//complexNumber& complexNumber::operator=(const fraction &other)
-//{
-//    if(this != &other)
-//        copy(other);
-//    return *this;
-//}
-//complexNumber& complexNumber::operator=(const int &other)
-//{
-//    if(this != &other)
-//        copy(other);
-//    return *this;
-//}
-//complexNumber& complexNumber::operator=(const double &other)
-//{
-//    if(this != &other)
-//        copy(other);
-//    return *this;
-//}
-
 std::ostream& operator<<(std::ostream &out, complexNumber&c)
 {
+
     mixedNumber real = c.num/c.denom, imaginaryPart = c.imaginary;
 
     out << real << " + " << imaginaryPart << "i";
 
     return out;
+}
+complexNumber& complexNumber::operator=(const mixedNumber &other)
+{ // This creates a temp fraction because a mixedNumber can be constructed from its fraction constituents.
+    fraction temp(other);
+    *this = temp;
+    return * this;
+}
+complexNumber& complexNumber::operator=(const fraction &other)
+{
+    num = other.getNum();
+    denom = other.getDenom();
+
+    imaginary = 0;
+    return *this;
+}
+complexNumber& complexNumber::operator=(const int &other)
+{
+    fraction temp(other);
+    *this = temp;
+    return * this;
+}
+complexNumber& complexNumber::operator=(const double &other)
+{
+    fraction temp(other);
+    *this = temp;
+    return * this;
 }
 
 
