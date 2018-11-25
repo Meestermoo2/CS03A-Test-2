@@ -15,12 +15,12 @@ class complexNumber : public mixedNumber
         complexNumber();
         ~complexNumber();
 
-        complexNumber(mixedNumber real, mixedNumber imaginary);
+        complexNumber(mixedNumber realPart, mixedNumber imaginaryPart);
         complexNumber(const complexNumber &other);
 
         mixedNumber getReal();
         mixedNumber getImaginary();
-        void setValue(mixedNumber real, mixedNumber imaginary);
+        void setValue(mixedNumber realPart, mixedNumber imaginaryPart);
 
         complexNumber& operator=(const complexNumber &other);
         complexNumber& operator=(const mixedNumber &other);

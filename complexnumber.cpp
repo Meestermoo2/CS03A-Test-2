@@ -14,42 +14,54 @@ complexNumber::complexNumber(const complexNumber &other)
     copy(other);
 }
 
-//complexNumber::complexNumber(mixedNumber real, mixedNumber imaginary)
+complexNumber::complexNumber(mixedNumber realPart, mixedNumber imaginaryPart)
+{
+    num = realPart.getNum();
+    denom = realPart.getDenom();
+
+    imaginary = imaginaryPart;
+}
+
+//complexNumber& complexNumber::operator=(const complexNumber &other)
 //{
-//    num = real.num;
-//    denom = real.denom;
+//    if(this != &other)
+//        copy(other);
+//    return *this;
+//}
+//complexNumber& complexNumber::operator=(const mixedNumber &other)
+//{
+//    if(this != &other)
+//        copy(other);
+//    return *this;
+//}
+//complexNumber& complexNumber::operator=(const fraction &other)
+//{
+//    if(this != &other)
+//        copy(other);
+//    return *this;
+//}
+//complexNumber& complexNumber::operator=(const int &other)
+//{
+//    if(this != &other)
+//        copy(other);
+//    return *this;
+//}
+//complexNumber& complexNumber::operator=(const double &other)
+//{
+//    if(this != &other)
+//        copy(other);
+//    return *this;
 //}
 
-complexNumber& complexNumber::operator=(const complexNumber &other)
+std::ostream& operator<<(std::ostream &out, complexNumber&c)
 {
-    if(this != &other)
-        copy(other);
-    return *this;
+    mixedNumber real = c.num/c.denom, imaginaryPart = c.imaginary;
+
+    out << real << " + " << imaginaryPart << "i";
+
+    return out;
 }
-complexNumber& complexNumber::operator=(const mixedNumber &other)
-{
-    if(this != &other)
-        copy(other);
-    return *this;
-}
-complexNumber& complexNumber::operator=(const fraction &other)
-{
-    if(this != &other)
-        copy(other);
-    return *this;
-}
-complexNumber& complexNumber::operator=(const int &other)
-{
-    if(this != &other)
-        copy(other);
-    return *this;
-}
-complexNumber& complexNumber::operator=(const double &other)
-{
-    if(this != &other)
-        copy(other);
-    return *this;
-}
+
 
 void complexNumber::copy(const complexNumber &other)
 {

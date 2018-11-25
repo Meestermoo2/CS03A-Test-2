@@ -1,5 +1,5 @@
 #include <iostream>
-#include "mixednumber.h"
+#include "complexnumber.h"
 
 using namespace std;
 
@@ -8,49 +8,57 @@ void introduction();
 
 int main()
 {
-    stringstream ss;
-    string input;
+//    stringstream ss;
+//    string input;
 
-    while(1)
-    {
-        mixedNumber a,b,c;
-        char junk = ' ';
-        cout << "Please enter an operation between two mixed numbers: ";
-        getline(cin, input);
-        ss << input;
+//    while(1)
+//    {
+//        mixedNumber a,b,c;
+//        char junk = ' ';
+//        cout << "Please enter an operation between two mixed numbers: ";
+//        getline(cin, input);
+//        ss << input;
 
-        ss >> a;
+//        ss >> a;
 
-        if(!(ss >> junk))
-            cout << "a = " << a << endl;
-        else
-        {
-            ss >> b;
+//        if(!(ss >> junk))
+//            cout << "a = " << a << endl;
+//        else
+//        {
+//            ss >> b;
 
-            switch(junk)
-            {
-                case '+':
-                    c=a+b;
-                    cout << "a+b = " << c << endl;
-                    break;
-                case '-':
-                    c=a-b;
-                    cout << "a-b = " << c << endl;
-                    break;
-                case '*':
-                    c=a*b;
-                    cout << "a*b = " << c << endl;
-                    break;
-                case '/':
-                    c=a/b;
-                    cout << "a/b = " << c << endl;
-                    break;
-                default:
-                    cout << endl;
-            }
-        }
-        ss.clear();
-    }
+//            switch(junk)
+//            {
+//                case '+':
+//                    c=a+b;
+//                    cout << "a+b = " << c << endl;
+//                    break;
+//                case '-':
+//                    c=a-b;
+//                    cout << "a-b = " << c << endl;
+//                    break;
+//                case '*':
+//                    c=a*b;
+//                    cout << "a*b = " << c << endl;
+//                    break;
+//                case '/':
+//                    c=a/b;
+//                    cout << "a/b = " << c << endl;
+//                    break;
+//                default:
+//                    cout << endl;
+//            }
+//        }
+//        ss.clear();
+//    }
+
+    mixedNumber a(3,3,4), b(2);
+
+    complexNumber c(a,b);
+
+    cout << "The complex Number is: " << c << endl;
+
+
 
     return 0;
 }
