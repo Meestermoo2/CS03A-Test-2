@@ -67,9 +67,11 @@ int main()
     complexNumber c(a,b);
     complexNumber d(b,a);
 
+    cout << c << endl;
+    c.conjugate();
+    cout << c << endl;
 //    c = c+d;
 
-    cout << c+d << endl;
 
     return 0;
 }
