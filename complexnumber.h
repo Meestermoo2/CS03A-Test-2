@@ -16,7 +16,7 @@ class complexNumber : public mixedNumber
         mixedNumber getImaginary() const;
 
         void setValue(mixedNumber realPart, mixedNumber imaginaryPart);
-        complexNumber conjugate();
+        complexNumber conjugate() const;
         mixedNumber magnitude();
 
 
@@ -47,10 +47,8 @@ class complexNumber : public mixedNumber
         friend
         std::ostream& operator<<(std::ostream &out, complexNumber&c);
 
-
-
     private:
-
+        mixedNumber real;
         mixedNumber imaginary;
         void copy(const complexNumber &other);
         void nukeEveryone();

@@ -33,6 +33,9 @@ class fraction
         void display();
         void getInput();
 
+        fraction squareRoot() const;
+
+
         friend
         std::ostream& operator<<(std::ostream& out, const fraction &frac);
 

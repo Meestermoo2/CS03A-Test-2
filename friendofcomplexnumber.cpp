@@ -65,10 +65,18 @@ complexNumber operator*(const complexNumber &x, const complexNumber &y)
 
 complexNumber operator/(const complexNumber &x, const complexNumber &y)
 {
-    complexNumber temp;
+    complexNumber a,b, result;
 
+    a = x * y.conjugate();
+    b = y * y.conjugate();
+    // If you multiply a complex by its conjugate, it will isolate the real number
 
-    return temp;
+    mixedNumber tempReal, tempImag;
+    tempReal = a.getReal()/b.getReal();
+    tempImag = a.getImaginary()/b.getReal();
+    result.setValue(tempReal, tempImag);
+
+    return result;
 }
 
 complexNumber operator^(const complexNumber &x, const complexNumber &y)

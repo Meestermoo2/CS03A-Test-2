@@ -95,15 +95,18 @@ void complexNumber::setValue(mixedNumber realPart, mixedNumber imaginaryPart)
     imaginary = imaginaryPart;
 }
 
-complexNumber complexNumber::conjugate()
+complexNumber complexNumber::conjugate() const
 {
-    imaginary *= -1;
-    return *this;
+    complexNumber temp;
+    temp.setValue(this->getReal(), this->getImaginary());
+    temp.imaginary *= -1;
+
+    return temp;
 }
 
 mixedNumber complexNumber::magnitude()
 {
-    mixedNumber temp, temp2, square;
+    mixedNumber temp, temp2, square, magnitude;
     mixedNumber a,b,c;
 
     temp = *this;
@@ -120,7 +123,9 @@ mixedNumber complexNumber::magnitude()
 
     square = a + b;
 
-    std::cout << "square: " << square << std::endl;
+    std::cout << "The square is " << square<< std::endl;
 
-    return square;
+    magnitude = square.squareRoot();
+
+    return magnitude;
 }

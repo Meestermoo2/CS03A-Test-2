@@ -1,4 +1,5 @@
 #include "fraction.h"
+#include <cmath>
 
 std::ostream& operator<<(std::ostream& out, const fraction &frac)
 {
@@ -130,6 +131,32 @@ fraction operator^(const fraction &x,const fraction &y)
     return temp1/temp2;
 }
 
+fraction fraction::squareRoot() const
+{
+    //babylonian algorithm
+//    fraction temp, r, preGuess;
+
+//    temp = *this;
+
+//    fraction guess = temp/2;
+
+//    preGuess = guess;
+
+//    while(!(guess <= preGuess*.001))
+//    {
+//        r = temp/guess;
+//        preGuess = guess;
+//        guess = (guess+r)/2;
+//    }
+
+//    return guess;
+
+    fraction temp;
+    temp.num = sqrt(*this->num);
+    temp.denom = sqrt(*this->denom);
+
+    return temp;
+}
 bool operator==(const fraction &x,const fraction &y)
 {
     return x.num * y.denom == y.num * x.denom;

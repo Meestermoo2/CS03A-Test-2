@@ -152,7 +152,6 @@ void fraction::getInput()
     reduce();
 }
 
-
 void fraction::reduce()
 {
     bool neg = num < 0 || denom < 0,
