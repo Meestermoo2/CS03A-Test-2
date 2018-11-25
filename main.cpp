@@ -52,7 +52,10 @@ int main()
 //        ss.clear();
 //    }
 
+    mixedNumber a(3,3,5), b(3.5);
+    complexNumber c(a,b);
     memories d;
+    d.library[3] = c;
 
     cout << "Here are your memories: " << d << endl;
 
