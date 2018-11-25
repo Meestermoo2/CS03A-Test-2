@@ -39,7 +39,7 @@ complexNumber& complexNumber::operator=(const mixedNumber &other)
 { // This creates a temp fraction because a mixedNumber can be constructed from its fraction constituents.
     fraction temp(other);
     *this = temp;
-    return * this;
+    return *this;
 }
 
 complexNumber& complexNumber::operator=(const fraction &other)
@@ -89,7 +89,7 @@ mixedNumber complexNumber::getImaginary() const
     return imaginary;
 }
 
-void complexNumber::setValue(mixedNumber realPart, mixedNumber imaginaryPart)
+void complexNumber::setValue(const mixedNumber realPart, const mixedNumber imaginaryPart)
 {
     *this = realPart;
     imaginary = imaginaryPart;
@@ -112,20 +112,26 @@ mixedNumber complexNumber::magnitude()
     temp = *this;
     temp2 = imaginary;
 
-    std::cout << "Temp: " << temp << std::endl;
-    std::cout << "Temp2: " << temp2 << std::endl;
+//    std::cout << "Temp: " << temp << std::endl;
+//    std::cout << "Temp2: " << temp2 << std::endl;
 
     a = temp^2;
     b= temp2^2;
 
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
+//    std::cout << a << std::endl;
+//    std::cout << b << std::endl;
 
     square = a + b;
 
-    std::cout << "The square is " << square<< std::endl;
+//    std::cout << "The square is " << square<< std::endl;
 
     magnitude = square.squareRoot();
 
     return magnitude;
+}
+
+void complexNumber::setReal(const mixedNumber &a)
+{
+    num = a.getNum();
+    denom = a.getDenom();
 }

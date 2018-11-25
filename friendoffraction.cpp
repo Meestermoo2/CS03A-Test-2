@@ -19,9 +19,7 @@ std::istream& operator>>(std::istream& in, fraction &frac)
         if(in>>possibleFraction)
         {
             if(possibleFraction.find_first_not_of("-+0123456789./") < possibleFraction.size())
-            {
                 throw Invalid_Type;
-            }
             ss<<possibleFraction;
             ss>>frac;
         }
@@ -152,8 +150,8 @@ fraction fraction::squareRoot() const
 //    return guess;
 
     fraction temp;
-    temp.num = sqrt(*this->num);
-    temp.denom = sqrt(*this->denom);
+    temp.num = sqrt(this->num);
+    temp.denom = sqrt(this->denom);
 
     return temp;
 }
