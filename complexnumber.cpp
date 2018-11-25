@@ -23,21 +23,13 @@ complexNumber::complexNumber(mixedNumber realPart, mixedNumber imaginaryPart)
     imaginary = imaginaryPart;
 }
 
-std::ostream& operator<<(std::ostream &out, complexNumber&c)
-{
-
-    mixedNumber real = c.num/c.denom, imaginaryPart = c.imaginary;
-
-    out << real << " + " << imaginaryPart << "i";
-
-    return out;
-}
 complexNumber& complexNumber::operator=(const mixedNumber &other)
 { // This creates a temp fraction because a mixedNumber can be constructed from its fraction constituents.
     fraction temp(other);
     *this = temp;
     return * this;
 }
+
 complexNumber& complexNumber::operator=(const fraction &other)
 {
     num = other.getNum();
@@ -46,12 +38,14 @@ complexNumber& complexNumber::operator=(const fraction &other)
     imaginary = 0;
     return *this;
 }
+
 complexNumber& complexNumber::operator=(const int &other)
 {
     fraction temp(other);
     *this = temp;
     return * this;
 }
+
 complexNumber& complexNumber::operator=(const double &other)
 {
     fraction temp(other);
@@ -67,6 +61,7 @@ void complexNumber::copy(const complexNumber &other)
 
     imaginary = other.imaginary;
 }
+
 void complexNumber::nukeEveryone()
 {
     imaginary = 0;
