@@ -4,7 +4,10 @@ std::ostream& operator<<(std::ostream &out, complexNumber&c)
 {
     mixedNumber real(0, c.num, c.denom);
 
-    out << real << " + " << c.imaginary << "i";
+    out << real;
+
+    if (c.imaginary != 0)
+        out  << " + " << c.imaginary << "i";
 
     return out;
 }
@@ -12,4 +15,11 @@ std::ostream& operator<<(std::ostream &out, complexNumber&c)
 std::istream& operator<<(std::istream &in, complexNumber&c)
 {
     return in;
+}
+
+
+complexNumber operator+(const complexNumber &x, const complexNumber &y)
+{
+//    complexNumber temp(x.getReal()+y.getReal(), x.imaginary+y.imaginary);
+//    return temp;
 }

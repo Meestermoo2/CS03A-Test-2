@@ -53,12 +53,23 @@ int main()
 //    }
 
     mixedNumber a(3,3,4), b(2);
+    mixedNumber z(3,5,4);
+    int integ = 3;
+    double dbl = 3.2;
 
+
+    complexNumber y(z,a);
     complexNumber c(a,b);
+    fraction frac(3.5);
 
+    cout << "The complex number is: " << y << endl;
     cout << "The complex Number is: " << c << endl;
 
+    y = dbl;
 
+
+
+    cout << "The complex number is: " << y+c << endl;
 
     return 0;
 }
