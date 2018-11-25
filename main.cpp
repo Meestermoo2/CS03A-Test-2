@@ -63,13 +63,22 @@ int main()
 //    cout << "testign save function ";
 //    d.save("hello");
 
-    mixedNumber a(0,3,4),b(3,1,4);
+    mixedNumber a(2,1,2),b(3,3,4);
     complexNumber c(a,b);
     complexNumber d(b,a);
 
-    c = c+d;
+    complexNumber e,f,g,h;
 
-    cout << c << endl;
+    cout << "C = " << c << endl;
+    cout << "D = " << d << endl;
+
+    e=c+d;
+    cout << "C+D = " << e << endl;
+    f=c-d;
+    cout << "C-D = " << f << endl;
+    g=c*d;
+    cout << "C*D = " << g << endl;
+
 
     return 0;
 }
