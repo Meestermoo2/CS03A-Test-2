@@ -23,6 +23,18 @@ complexNumber::complexNumber(mixedNumber realPart, mixedNumber imaginaryPart)
     imaginary = imaginaryPart;
 }
 
+complexNumber& complexNumber::operator=(const complexNumber &other)
+{
+    if(this != &other)
+    {
+        num = other.num;
+        denom = other.denom;
+
+        imaginary = other.imaginary;
+    }
+    return *this;
+}
+
 complexNumber& complexNumber::operator=(const mixedNumber &other)
 { // This creates a temp fraction because a mixedNumber can be constructed from its fraction constituents.
     fraction temp(other);
@@ -31,7 +43,7 @@ complexNumber& complexNumber::operator=(const mixedNumber &other)
 }
 
 complexNumber& complexNumber::operator=(const fraction &other)
-{
+{    
     num = other.getNum();
     denom = other.getDenom();
 
@@ -53,7 +65,6 @@ complexNumber& complexNumber::operator=(const double &other)
     return * this;
 }
 
-
 void complexNumber::copy(const complexNumber &other)
 {
     num = other.num;
@@ -65,4 +76,10 @@ void complexNumber::copy(const complexNumber &other)
 void complexNumber::nukeEveryone()
 {
     imaginary = 0;
+}
+
+mixedNumber complexNumber::getReal() const
+{
+    mixedNumber temp(0, num, denom);
+    return temp;
 }

@@ -4,8 +4,7 @@ memories::memories()
 {
     for(unsigned int i = 0; i < 26; ++i)
     {
-        complexNumber a(0,0);
-        library[i] = a;
+        library[i] = 0;
     }
 }
 

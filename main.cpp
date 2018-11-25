@@ -52,13 +52,7 @@ int main()
 //        ss.clear();
 //    }
 
-    mixedNumber a(3,3,4), b(2);
-
-    complexNumber c(a,b);
-
     memories d;
-
-    cout << "The complex Number is: " << c << endl;
 
     cout << "Here are your memories: " << d << endl;
 

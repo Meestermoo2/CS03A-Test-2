@@ -13,7 +13,7 @@ class complexNumber : public mixedNumber
         complexNumber(mixedNumber realPart, mixedNumber imaginaryPart);
         complexNumber(const complexNumber &other);
 
-        mixedNumber getReal();
+        mixedNumber getReal() const;
         mixedNumber getImaginary();
         void setValue(mixedNumber realPart, mixedNumber imaginaryPart);
 
