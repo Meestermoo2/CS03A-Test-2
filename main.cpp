@@ -63,7 +63,7 @@ int main()
 //    cout << "testign save function ";
 //    d.save("hello");
 
-    mixedNumber a(2,1,2),b(3,3,4);
+    mixedNumber a(2,0,0),b(2,0,0);
     complexNumber c(a,b);
     complexNumber d(b,a);
 
@@ -78,10 +78,8 @@ int main()
     cout << "C-D = " << f << endl;
     g=c*d;
     cout << "C*D = " << g << endl;
-    cout << c << endl;
-    c.conjugate();
-    cout << c << endl;
-
+    h= c/d;
+    cout << "C/D = " << h << endl;
 
     return 0;
 }

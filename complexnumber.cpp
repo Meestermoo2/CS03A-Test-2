@@ -97,7 +97,10 @@ void complexNumber::setValue(mixedNumber realPart, mixedNumber imaginaryPart)
 
 complexNumber complexNumber::conjugate()
 {
-    imaginary *= -1;
-    return *this;
+    complexNumber temp;
+    temp.setValue(this->getReal(), this->getImaginary());
+    temp.imaginary *= -1;
+
+    return temp;
 }
 

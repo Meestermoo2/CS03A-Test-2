@@ -1,2 +1,3 @@
 - cannot directly output the addition of 2 complex numbers. output only shows a mixed number
 e.g (cout << c+d << endl)
+-set values for mixedNumber allows for improper values
