@@ -64,30 +64,48 @@ int main()
 //    d.save("hello");
 
 
-    mixedNumber a(0,2,3),b(0,4,3), j(3), k(4), l;
-    complexNumber c(a,b);
-    complexNumber d(b,a);
+//    mixedNumber a(0,2,3),b(0,4,3), j(3), k(4), l;
+//    complexNumber c(a,b);
+//    complexNumber d(b,a);
 
-    complexNumber e,f,g,h(j,k),i,z;
+//    complexNumber e,f,g,h(j,k),i,z;
 
-    cout << "C = " << c << endl;
-    cout << "D = " << d << endl;
+//    cout << "C = " << c << endl;
+//    cout << "D = " << d << endl;
 
-    e=c+d;
-    cout << "C+D = " << e << endl;
-    f=c-d;
-    cout << "C-D = " << f << endl;
-    g=c*d;
-    cout << "C*D = " << g << endl;
-    cout << c << endl;
-    i = c/d;
-    cout << "C/D = " << i << endl;
-    cout << "The conjugate of c is: ";
-    z = c.conjugate();
-    cout << z << endl;
-    cout << "l is equal to: " << h << endl;
-    l = h.magnitude();
-    cout << "The magnitude of l is " << l << endl;
+//    e=c+d;
+//    cout << "C+D = " << e << endl;
+//    f=c-d;
+//    cout << "C-D = " << f << endl;
+//    g=c*d;
+//    cout << "C*D = " << g << endl;
+//    cout << c << endl;
+//    i = c/d;
+//    cout << "C/D = " << i << endl;
+//    cout << "The conjugate of c is: ";
+//    z = c.conjugate();
+//    cout << z << endl;
+//    cout << "l is equal to: " << h << endl;
+//    l = h.magnitude();
+//    cout << "The magnitude of l is " << l << endl;
+
+    while(1)
+    {
+        try
+        {
+            while (1)
+            {
+                complexNumber a;
+                cout << "\nInput a complex number: ";
+                cin >> a;
+                cout << "Your complex number is: "<< a;
+            }
+        }catch(...)
+        {
+            cout << "Error";
+        }
+    }
+
 
     return 0;
 }

@@ -14,7 +14,7 @@ std::ostream& operator<<( std::ostream &out, const mixedNumber &m)
 }
 
 std::istream& operator>>( std::istream &in, mixedNumber &m)
-{
+{ // Need to add cin logic? // need to add getline logic?
     fraction temp_whole, temp_mixed;
 
     if (in >> temp_whole)

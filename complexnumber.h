@@ -3,6 +3,8 @@
 
 #include "mixednumber.h"
 
+enum complexERRORS{INVALIDTYPE};
+
 class complexNumber : public mixedNumber
 {
     public:
@@ -15,7 +17,8 @@ class complexNumber : public mixedNumber
         mixedNumber getReal() const;
         mixedNumber getImaginary() const;
 
-        void setValue(mixedNumber realPart, mixedNumber imaginaryPart);
+        void setValue(const mixedNumber realPart, const mixedNumber imaginaryPart);
+        void setReal(const mixedNumber &a);
         complexNumber conjugate() const;
         mixedNumber magnitude();
 
@@ -48,11 +51,9 @@ class complexNumber : public mixedNumber
         std::ostream& operator<<(std::ostream &out, complexNumber&c);
 
     private:
-        mixedNumber real;
         mixedNumber imaginary;
         void copy(const complexNumber &other);
         void nukeEveryone();
-
 };
 
 #endif // COMPLEXNUMBER_H

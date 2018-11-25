@@ -1,3 +1,7 @@
 - cannot directly output the addition of 2 complex numbers. output only shows a mixed number
 e.g (cout << c+d << endl)
 -set values for mixedNumber allows for improper values
+- need to add cin logic for mixedNum
+- need to getline in insertion or mixedNum?
+- error out when taking unecessary input (21 3/4 4)
+- error handlging (3-2 evaluates to 3-2i), (3+3)

@@ -3,16 +3,17 @@
 std::ostream& operator<<(std::ostream &out, complexNumber&c)
 {
     //why not create the real part?
-    mixedNumber real(0, c.num, c.denom);
 
-    out << real;
-
+    if (c.getReal() !=0)
+       out << c.getReal();
 
     if (c.imaginary != 0)
     {
-        if (c.imaginary > 0)
+        if (c.imaginary > 0 && c.getReal() !=0)
             out << "+";
-        out << c.imaginary << "i";
+        if (c.imaginary != 1 && c.imaginary != -1)
+            out << c.imaginary;
+        out << "i";
     }
 
     return out;
@@ -20,6 +21,40 @@ std::ostream& operator<<(std::ostream &out, complexNumber&c)
 
 std::istream& operator>>(std::istream &in, complexNumber&c)
 {
+    c.nukeEveryone();
+    std::stringstream ss;
+    std::string possibleComplex;
+    if(&in == &std::cin) //This means that the program is reading from the console
+    {
+        std::getline(in, possibleComplex);
+        if(possibleComplex.find_first_not_of("-+0123456789./i ") < possibleComplex.size())
+            throw INVALIDTYPE;
+        ss<<possibleComplex;
+        ss>>c;
+
+    }
+    else//Let's assume everything else is a file (for now)
+    {
+        mixedNumber temp;
+        in >> temp;
+
+
+        if (in.peek() == 'i')
+        {
+            c.setValue(0,temp);
+            return in;
+        }
+        else
+        {
+            c.setReal(temp);
+            if (in.peek() == '+' || in.peek() == '-')
+            {
+                in>>c.imaginary;
+                if (in.peek() != 'i')
+                    throw INVALIDTYPE;
+            }
+        }
+    }
     return in;
 }
 complexNumber operator+(const complexNumber &x, const complexNumber &y)

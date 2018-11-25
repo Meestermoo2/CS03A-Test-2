@@ -19,9 +19,7 @@ std::istream& operator>>(std::istream& in, fraction &frac)
         if(in>>possibleFraction)
         {
             if(possibleFraction.find_first_not_of("-+0123456789./") < possibleFraction.size())
-            {
                 throw Invalid_Type;
-            }
             ss<<possibleFraction;
             ss>>frac;
         }
