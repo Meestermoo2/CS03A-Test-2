@@ -137,7 +137,7 @@ void memories::display()
         if(i%2 == 0)
             std::cout << std::endl;
         std::cout << static_cast<char>(i+65)
-                  << " = " << library[i] << std::right << std::setw(25);
+                  << " = " << library[i];
     }
 
     std::cout << std::endl;
@@ -172,6 +172,7 @@ void memories::choice(const std::string &input,
 //        case EXIT:
 //            exit(argument);
 //            break;
+
         case WEXIT:
             wexit(argument);
             break;
@@ -234,4 +235,8 @@ void memories::conjugate(const int index, const int arg1)
     library[index] = library[arg1].conjugate();
     std::cout << std::endl << char(index+65) << "=" << library[index] << std::endl;
 }
-
+void memories::power(const int index, const int arg1, const int arg2)
+{
+    library[index] = library[arg1]^library[arg2];
+    std::cout << std::endl << char(index+65) << "=" << library[index] << std::endl;
+}

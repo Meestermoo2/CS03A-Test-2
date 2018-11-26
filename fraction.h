@@ -29,12 +29,12 @@ class fraction
 
         int getNum() const; //accessor function for numerator
         int getDenom() const;//accessor function for denominator
-        double getDouble() const; // returns double
         void setValue(int n, int d = 1); //mutator function
         void display();
         void getInput();
 
         fraction squareRoot() const;
+
 
         friend
         std::ostream& operator<<(std::ostream& out, const fraction &frac);

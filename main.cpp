@@ -24,7 +24,6 @@ void executeFile(string filename, string &userInput, int&count);
 //opens file, assigns command from file to userInput, closes file
 int main(int argc, char *argv[])
 {
-    driverProgram();
 
     introduction();
     bool CL = checkCL(argc);
@@ -181,6 +180,9 @@ void getInput(istream& in, memories& a, char *commands[], int count,
                         break;
                     case '/':
                         a.divide(index-65, b-65, c-65);
+                        break;
+                    case '^':
+                        a.power(index-65, b-65, c-65);
                         break;
                     default:
                         cout << "Error " << endl;

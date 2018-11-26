@@ -128,12 +128,6 @@ int fraction::getDenom() const//accessor function for denominator
     return denom;
 }
 
-double fraction::getDouble() const
-{
-    double d_num = num;
-    return d_num/denom;
-}
-
 void fraction::setValue(int n, int d) //mutator function
 {
     num = n;

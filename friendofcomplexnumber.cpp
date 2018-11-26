@@ -175,12 +175,6 @@ complexNumber operator/(const complexNumber &x, const complexNumber &y)
 
 complexNumber operator^(const complexNumber &x, const complexNumber &y)
 {
-    using namespace std;
-
-    complex<double> a(x.getDouble(), x.imaginary.getDouble()),
-                        b(y.getDouble(), y.imaginary.getDouble()),
-                        c;
-
-    c = pow(a,b);
-    return complexNumber(c.real(),c.imag());
+    complexNumber temp;
+    return temp;
 }
