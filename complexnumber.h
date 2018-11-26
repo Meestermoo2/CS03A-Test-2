@@ -23,7 +23,6 @@ class complexNumber : public mixedNumber
         complexNumber conjugate() const;
         mixedNumber magnitude();
 
-
         complexNumber& operator=(const complexNumber &other);
         complexNumber& operator=(const mixedNumber &other);
         complexNumber& operator=(const fraction &other);

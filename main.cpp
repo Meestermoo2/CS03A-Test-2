@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include "memories.h"
+#include "driverprogram.cpp"
 
 using namespace std;
 
@@ -104,61 +105,61 @@ int main(int argc, char *argv[])
 //    l = h.magnitude();
 //    cout << "The magnitude of l is " << l << endl;
 
-    introduction();
-    bool CL = checkCL(argc);
-    while(1)
-    {
-       try
-        {
-            memories a;
-            ifstream in;
+//    introduction();
+//    bool CL = checkCL(argc);
+//    while(1)
+//    {
+//       try
+//        {
+//            memories a;
+//            ifstream in;
 
-            if(CL)
-                getInput(in, a, argv, argc); //if parameters in command line, we're reading from a file
-            else
-                getInput(cin, a, argv, argc); //read straight from the terminal
+//            if(CL)
+//                getInput(in, a, argv, argc); //if parameters in command line, we're reading from a file
+//            else
+//                getInput(cin, a, argv, argc); //read straight from the terminal
 
-        }
-        catch (fraction_ERRORS e)
-        {
-            switch(e)
-            {
-                case DivByZero :
-                    cout << "Division by zero" << endl;
-                    break;
-                case Invalid_Type :
-                    cout << "Invalid type was entered" << endl;
-                    break;
-            }
-        }
-        catch (mixedNumber_ERRORS f)
-        {
-            switch(f)
-            {
-                case improper_mixed :
-                    cout << "Improper Mixed Number" << endl;
-                    break;
-            }
-        }catch(complexERRORS e)
-        {
-            switch(e) {
-            case INVALIDINPUT:
-                cout << "User has entered an invalid input";
-                break;
-            case INVALIDTYPE:
-                cout << "Invalid Type" << endl;
-                break;
-            default:
-                cout << "An unknown error has occured" << endl;
-            }
-        }
-        catch (...)
-        {
-            cout << "an unknown error has occured" << endl;
-        }
+//        }
+//        catch (fraction_ERRORS e)
+//        {
+//            switch(e)
+//            {
+//                case DivByZero :
+//                    cout << "Division by zero" << endl;
+//                    break;
+//                case Invalid_Type :
+//                    cout << "Invalid type was entered" << endl;
+//                    break;
+//            }
+//        }
+//        catch (mixedNumber_ERRORS f)
+//        {
+//            switch(f)
+//            {
+//                case improper_mixed :
+//                    cout << "Improper Mixed Number" << endl;
+//                    break;
+//            }
+//        }catch(complexERRORS e)
+//        {
+//            switch(e) {
+//            case INVALIDINPUT:
+//                cout << "User has entered an invalid input";
+//                break;
+//            case INVALIDTYPE:
+//                cout << "Invalid Type" << endl;
+//                break;
+//            default:
+//                cout << "An unknown error has occured" << endl;
+//            }
+//        }
+//        catch (...)
+//        {
+//            cout << "an unknown error has occured" << endl;
+//        }
 
-    }
-    return 0;
+//    }
+//    return 0;
 //    while(1)
 //    {
 //        try
@@ -175,6 +176,7 @@ int main(int argc, char *argv[])
 //            cout << "Error";
 //        }
 //    }
+    driverProgram();
 }
 
 void introduction()
