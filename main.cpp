@@ -24,159 +24,61 @@ void executeFile(string filename, string &userInput, int&count);
 //opens file, assigns command from file to userInput, closes file
 int main(int argc, char *argv[])
 {
-//    stringstream ss;
-//    string input;
 
-//    while(1)
-//    {
-//        mixedNumber a,b,c;
-//        char junk = ' ';
-//        cout << "Please enter an operation between two mixed numbers: ";
-//        getline(cin, input);
-//        ss << input;
+    introduction();
+    bool CL = checkCL(argc);
+    while(1)
+    {
+       try
+        {
+            memories a;
+            ifstream in;
 
-//        ss >> a;
+            if(CL)
+                getInput(in, a, argv, argc); //if parameters in command line, we're reading from a file
+            else
+                getInput(cin, a, argv, argc); //read straight from the terminal
 
-//        if(!(ss >> junk))
-//            cout << "a = " << a << endl;
-//        else
-//        {
-//            ss >> b;
-
-//            switch(junk)
-//            {
-//                case '+':
-//                    c=a+b;
-//                    cout << "a+b = " << c << endl;
-//                    break;
-//                case '-':
-//                    c=a-b;
-//                    cout << "a-b = " << c << endl;
-//                    break;
-//                case '*':
-//                    c=a*b;
-//                    cout << "a*b = " << c << endl;
-//                    break;
-//                case '/':
-//                    c=a/b;
-//                    cout << "a/b = " << c << endl;
-//                    break;
-//                default:
-//                    cout << endl;
-//            }
-//        }
-//        ss.clear();
-//    }
-
-//    cout << "Here are your memories: " << d << endl;
-
-//    cout << "testing display function ";
-//    d.display();
-
-//    cout << "testing print function ";
-//    d.print("A");
-
-//    cout << "testign save function ";
-//    d.save("hello");
-
-
-//    mixedNumber a(0,2,3),b(0,4,3), j(3), k(4), l;
-//    complexNumber c(a,b);
-//    complexNumber d(b,a);
-
-//    complexNumber e,f,g,h(j,k),i,z;
-
-//    cout << "C = " << c << endl;
-//    cout << "D = " << d << endl;
-
-//    e=c+d;
-//    cout << "C+D = " << e << endl;
-//    f=c-d;
-//    cout << "C-D = " << f << endl;
-//    g=c*d;
-//    cout << "C*D = " << g << endl;
-//    cout << c << endl;
-//    i = c/d;
-//    cout << "C/D = " << i << endl;
-//    cout << "The conjugate of c is: ";
-//    z = c.conjugate();
-//    cout << z << endl;
-//    cout << "l is equal to: " << h << endl;
-//    l = h.magnitude();
-//    cout << "The magnitude of l is " << l << endl;
-
-//    introduction();
-//    bool CL = checkCL(argc);
-//    while(1)
-//    {
-//       try
-//        {
-//            memories a;
-//            ifstream in;
-
-//            if(CL)
-//                getInput(in, a, argv, argc); //if parameters in command line, we're reading from a file
-//            else
-//                getInput(cin, a, argv, argc); //read straight from the terminal
-
-//        }
-//        catch (fraction_ERRORS e)
-//        {
-//            switch(e)
-//            {
-//                case DivByZero :
-//                    cout << "Division by zero" << endl;
-//                    break;
-//                case Invalid_Type :
-//                    cout << "Invalid type was entered" << endl;
-//                    break;
-//            }
-//        }
-//        catch (mixedNumber_ERRORS f)
-//        {
-//            switch(f)
-//            {
-//                case improper_mixed :
-//                    cout << "Improper Mixed Number" << endl;
-//                    break;
-//            }
-//        }catch(complexERRORS e)
-//        {
-//            switch(e) {
-//            case INVALIDINPUT:
-//                cout << "User has entered an invalid input";
-//                break;
-//            case INVALIDTYPE:
-//                cout << "Invalid Type" << endl;
-//                break;
-//            default:
-//                cout << "An unknown error has occured" << endl;
-//            }
-//        }
-//        catch (...)
-//        {
-//            cout << "an unknown error has occured" << endl;
-//        }
-
-//    }
-//    return 0;
-//    while(1)
-//    {
-//        try
-//        {
-//            while (1)
-//            {
-//                complexNumber a;
-//                cout << "\nInput a complex number: ";
-//                cin >> a;
-//                cout << "Your complex number is: "<< a;
-//            }
-//        }catch(...)
-//        {
-//            cout << "Error";
-//        }
-//    }
-    driverProgram();
+        }
+        catch (fraction_ERRORS e)
+        {
+            switch(e)
+            {
+                case DivByZero :
+                    cout << "Division by zero" << endl;
+                    break;
+                case Invalid_Type :
+                    cout << "Invalid type was entered" << endl;
+                    break;
+            }
+        }
+        catch (mixedNumber_ERRORS f)
+        {
+            switch(f)
+            {
+                case improper_mixed :
+                    cout << "Improper Mixed Number" << endl;
+                    break;
+            }
+        }catch(complexERRORS e)
+        {
+            switch(e) {
+            case INVALIDINPUT:
+                cout << "User has entered an invalid input";
+                break;
+            case INVALIDTYPE:
+                cout << "Invalid Type" << endl;
+                break;
+            default:
+                cout << "An unknown error has occured" << endl;
+            }
+        }
+        catch (...)
+        {
+            cout << "an unknown error has occured" << endl;
+        }
+    }
+    return 0;
 }
 
 void introduction()
@@ -186,6 +88,7 @@ void introduction()
     cout << "This Program is called complexCalculate and it is an complexNumber Calculator \n that that will store up to 26 complex numbers." << endl;
     cout << border << endl;
 }
+
 bool checkCL(int count)
 {
     //if command line containes 1 or 2 parameters (excluding the name of the program)
@@ -248,21 +151,21 @@ void getInput(istream& in, memories& a, char *commands[], int count,
             if (userInput[1]=='=')
             {
                 char index, b, c;
-                int deriv_count(0);
 
                 index = toupper(userInput[0]); // takes initial element as variable for poly a
-                b = toupper(userInput[2]); // takes 3rd element as letter for poly b
+                b = toupper(userInput[2]);// takes 3rd element as letter for poly b
 
                 //for derivative calculator (ex F=G')
-                if (userInput[3] == '~')
+                if (b == '~')
                 {
+                    c=toupper(userInput[3]);
+                    a.conjugate(index-65, c-65);
                     //calculate conjugate
                 }
                 //for expresison calculator (ex F=G+H)
                 else
                 {
                     c= toupper(userInput[4]);
-
                     //switch that depends on operator
                     switch (userInput[3])
                     {
