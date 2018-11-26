@@ -6,6 +6,7 @@ memories::memories()
     {
         library[i] = 0;
     }
+    initializeMap();
 }
 
 memories::~memories()
@@ -21,6 +22,48 @@ void memories::clearLibrary()
     }
 }
 
+void memories::let(const std::string &arg)
+{ // Configures an given expression derived from arg to a poly, also derived
+  // from arg. E.g. "F=3X^3" etc.
+    std::stringstream temp;
+    char index; // Holds first char to be used as index
+    char junk; // Will hold '='
+
+    temp << arg;
+    temp >> index >> junk;
+    index = toupper(index);
+
+    mixedNumber a(0), c(0);
+    complexNumber b(a,c);
+    library[index-65] = b; // Sets the destination expression to zero before insertion
+    temp >> library[index-65];
+
+    // Displays a successful configuration
+    std::cout << std::endl << index << " = "
+              << library[int(index-65)] << std::endl;
+}
+
+// Loads preconfigured library of expression to current working library
+void memories::load(const std::string &arg)
+{
+    std::ofstream out;
+    std::ifstream in;
+    std::string filename = arg;
+
+    // Open with arg name, check to overwrite
+    if(filename.find('.') > filename.size())
+      filename+= ".complex";
+    in.open(filename);
+    if((in.fail()))
+    {
+        std::cout << "The input file does not exist!" << std::endl;
+    }
+    else
+    {
+        in >> *this;
+        std::cout << "The file \"" << filename << "\" was loaded! \n";
+    }
+}
 void memories::save(std::string arg)
 { // Saves current expression library to file while checking for existing file
     std::ofstream out;
@@ -29,7 +72,7 @@ void memories::save(std::string arg)
 
     char ans;
     if(filename.find('.') > filename.size())
-        filename += ".exp";
+        filename += ".complex";
     in.open(filename);
     in.close();
     if(in.fail())
@@ -73,3 +116,91 @@ void memories::print(const std::string &arg)
 {
     std:: cout << arg[0] << " = "<< library[toupper(arg[0])-65] << std::endl;
 }
+
+void memories::initializeMap()
+{
+    commandMap["let"] = LET;
+    commandMap["print"] = PRINT;
+    commandMap["load"] = LOAD;
+    commandMap["save"] = SAVE;
+    commandMap["exit"] = EXIT;
+    commandMap["display"] = DISPLAY;
+    commandMap["wexit"] = WEXIT;
+    commandMap["magnitude"] = MAGNITUDE;
+    commandMap["trig"] = TRIG;
+}
+
+void memories::choice(const std::string &input,
+                        const std::string &argument)
+{ // Maps a given input to our predefined functions
+    std:: string temp_str = "";
+
+    for (unsigned int i = 0; i < input.length(); ++i)
+    {
+        temp_str += tolower(input[i]);
+    }
+
+    switch(commandMap[temp_str])
+    {
+        case LET:
+            let(argument);
+            break;
+
+//        case EXIT:
+//            exit(argument);
+//            break;
+//        case wexit:
+//            wexit(argument);
+//            break;
+
+//        case TRIG
+//             trig();
+//             break
+
+        case PRINT:
+            print(argument);
+            break;
+
+        case LOAD:
+            load(argument);
+            break;
+
+        case SAVE:
+            save(argument);
+            break;
+
+        case DISPLAY:
+            display();
+            break;
+
+//        case MAGNITUDE:
+//             magnitude();
+//            break;
+
+        default:
+            throw INVALID_INPUT;
+            break;// replace with throw error?
+    }
+}
+
+void memories::add(const int index, const int arg1, const int arg2)
+{
+    library[index] = library[arg1] + library[arg2];
+    std::cout << std::endl << char(index+65) << "=" << library[index] << std::endl;
+}
+void memories::subtract(const int index, const int arg1, const int arg2)
+{
+    library[index] = library[arg1] - library[arg2];
+    std::cout << std::endl << char(index+65) << "=" << library[index] << std::endl;
+}
+void memories::multiply(const int index, const int arg1, const int arg2)
+{
+    library[index] = library[arg1] * library[arg2];
+    std::cout << std::endl << char(index+65) << "=" << library[index] << std::endl;
+}
+void memories::divide(const int index, const int arg1, const int arg2)
+{
+    library[index] = library[arg1] / library[arg2];
+    std::cout << std::endl << char(index+65) << "=" << library[index] << std::endl;
+}
+
