@@ -6,3 +6,4 @@ e.g (cout << c+d << endl)
 - error out when taking unecessary input (21 3/4 4)
 - error handlging (3-2 evaluates to 3-2i), (3+3)
 - 3 4/5 + 4i should result in error
+- need to scrap bad input

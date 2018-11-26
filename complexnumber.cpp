@@ -15,12 +15,18 @@ complexNumber::complexNumber(const complexNumber &other)
     copy(other);
 }
 
-complexNumber::complexNumber(mixedNumber realPart, mixedNumber imaginaryPart)
+complexNumber::complexNumber(const mixedNumber &realPart, const mixedNumber &imaginaryPart)
 {
     num = realPart.getNum();
     denom = realPart.getDenom();
 
     imaginary = imaginaryPart;
+}
+
+complexNumber::complexNumber(const double &realPart, const double &imaginaryPart)
+{
+    mixedNumber temp(realPart), temp2(imaginaryPart);
+    this->setValue(temp, temp2);
 }
 
 complexNumber& complexNumber::operator=(const complexNumber &other)
