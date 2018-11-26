@@ -176,6 +176,10 @@ void memories::magnitude(const std::string &arg)
     std:: cout << "The magnitude of " << arg[0] << " is equal to "<< library[toupper(arg[0])-65].magnitude() << std::endl;
 }
 
+void memories::trig(const std::string &arg)
+{
+    library[int(arg[0]-65)].polarForm();
+}
 void memories::choice(const std::string &input,
                         const std::string &argument, bool saved)
 { // Maps a given input to our predefined functions
@@ -203,9 +207,9 @@ void memories::choice(const std::string &input,
             clearLibrary();
             break;
 
-//        case TRIG
-//             trig();
-//             break
+        case TRIG:
+            trig(argument);
+            break;
 
         case PRINT:
             print(argument);

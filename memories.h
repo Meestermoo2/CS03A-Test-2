@@ -40,6 +40,7 @@ class memories
         void save(const std::string arg);
         void wexit(const std::string &arg);
         void magnitude(const std::string &arg);
+        void trig(const std::string &arg);
 
 };
 

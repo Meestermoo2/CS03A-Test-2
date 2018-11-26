@@ -111,8 +111,8 @@ void getInput(istream& in, memories& a, char *commands[], int count,
               const bool record, const bool execute)
 {
     string userInput;
-    string arg;
-    char junk;
+    string arg = "";
+    char var;
     bool saved = false;
 
     int comCount=0;
@@ -197,25 +197,39 @@ void getInput(istream& in, memories& a, char *commands[], int count,
                 std:: string temp_str = "";
                 //take command
                 user_ss >> userInput;
-                user_ss.get(junk);
-                //take expression
-                getline(user_ss, arg);
-                //passes it to choice function
-                a.choice(userInput, arg, saved);
-
-                for (unsigned int i = 0; i < userInput.length(); ++i)
+                user_ss.get();
+                if(user_ss.peek() == '(')
                 {
-                    temp_str += tolower(userInput[i]);
-                }
-
-                if(temp_str == "save")
-                {
-                    saved = true;
+                    //Trig (F)
+                    user_ss.get();
+                    arg += user_ss.get();
+                    if (user_ss.peek() == ')')
+                    {
+                        user_ss.get();
+                        if (user_ss.rdbuf()->in_avail() > 0) // if the buffer contains more than i..
+                            throw INVALIDINPUT;
+                    }
+                    arg = toupper(arg[0]);
+                    a.choice(userInput, arg, saved);
                 }
                 else
-                    saved = false;
+                {
+                    //take expression
+                    getline(user_ss, arg);
+                    //passes it to choice function
+                    a.choice(userInput, arg, saved);
+                    for (unsigned int i = 0; i < userInput.length(); ++i)
+                    {
+                        temp_str += tolower(userInput[i]);
+                    }
+                    if(temp_str == "save")
+                    {
+                        saved = true;
+                    }
+                    else
+                        saved = false;
+                }
             }
-
         }
     }
     //if there are arguments in the command line
