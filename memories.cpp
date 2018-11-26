@@ -1,5 +1,6 @@
 #include "memories.h"
 #include <cstdlib>
+#include <iomanip>
 
 memories::memories()
 {
@@ -132,8 +133,12 @@ void memories::wexit(const std::string &arg)
 void memories::display()
 {
     for(unsigned int i = 0; i < 26; ++i)
-        std::cout<< static_cast<char>(i+65)
-                  << " = " << library[i] << std::endl;
+    {
+        if(i%2 == 0)
+            std::cout << std::endl;
+        std::cout << static_cast<char>(i+65)
+                  << " = " << library[i] << std::right << std::setw(25);
+    }
 
     std::cout << std::endl;
 }
