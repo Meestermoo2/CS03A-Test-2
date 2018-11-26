@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include "memories.h"
+#include "driverprogram.cpp"
 
 using namespace std;
 
@@ -76,7 +77,6 @@ int main(int argc, char *argv[])
         {
             cout << "an unknown error has occured" << endl;
         }
-
     }
     return 0;
 }

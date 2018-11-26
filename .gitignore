@@ -35,3 +35,4 @@
 *.autosave
 *.pro.user
 *.pro.user.*
+driverprogram.cpp
