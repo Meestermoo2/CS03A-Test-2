@@ -25,8 +25,7 @@ class memories
         void power(const int index, const int arg1, const int arg2);
 
         void conjugate(const int index, const int arg1);
-
-
+        void power(const int index, const int arg1, const int arg2);
 
         friend
         std::ostream& operator<<(std::ostream& out, memories &m);
@@ -43,7 +42,6 @@ class memories
         void save(const std::string arg);
         void wexit(const std::string &arg);
         void magnitude(const std::string &arg);
-
 
 };
 

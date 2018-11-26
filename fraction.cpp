@@ -26,12 +26,12 @@ fraction::fraction(const double &other)
 {   //Turns double into a string, which is divided into two parts (whole.fraction)
     std::string wholePart, fractionPart;
     std::stringstream ss;
-
+    ss<<std::fixed; // this takes care of scientific notation (2.3232232e-23)
     ss<<other;
+
     // This operation turns the double into a string
     getline(ss, wholePart,'.');
     // This takes the first 'part' of the string delimited by the period
-
     getline(ss,fractionPart);
     // This takes in the rest of the double following the decimal
 
@@ -40,7 +40,6 @@ fraction::fraction(const double &other)
     if(fractionPart == "")
             fractionPart += '0';
     // This is required because when a decimal such as "3.0" is inserted into string stream, it evaluates it says "3" instead, causing an empty string.
-
     denom = makeDenom(numDigits, allDecimalsTheSame(fractionPart));
 
     // This will convert repeating decimals and non repeating decimals into an denominator (as an int).

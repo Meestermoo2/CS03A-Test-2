@@ -181,6 +181,14 @@ complexNumber operator^(const complexNumber &x, const complexNumber &y)
                         b(y.getDouble(), y.imaginary.getDouble()),
                         c;
 
-    c = pow(a,b);
+    cout << "a real: " << a.real()<< endl;
+    cout << "a imag: " << a.imag()<< endl;
+    cout << "b real: " << b.real()<< endl;
+    cout << "b imag: " << b.imag()<< endl;
+
+    c = exp(b*log(a));
+
+    cout << c.imag() << endl;
+
     return complexNumber(c.real(),c.imag());
 }
