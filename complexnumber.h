@@ -8,20 +8,22 @@ enum complexERRORS{INVALIDTYPE,INVALIDINPUT};
 class complexNumber : public mixedNumber
 {
     public:
-
         complexNumber();
         ~complexNumber();
         complexNumber(const mixedNumber &realPart, const mixedNumber &imaginaryPart);
         complexNumber(const double &realPart, const double &imaginaryPart);
+        complexNumber(const int &realPart, const int &imaginaryPart);
         complexNumber(const complexNumber &other);
 
         mixedNumber getReal() const;
         mixedNumber getImaginary() const;
+        mixedNumber magnitude();
+        complexNumber conjugate() const;
 
         void setValue(const mixedNumber realPart, const mixedNumber imaginaryPart);
         void setReal(const mixedNumber &a);
-        complexNumber conjugate() const;
-        mixedNumber magnitude();
+        void setReal(const double &d);
+        void setReal(const int &i);
 
         complexNumber& operator=(const complexNumber &other);
         complexNumber& operator=(const mixedNumber &other);

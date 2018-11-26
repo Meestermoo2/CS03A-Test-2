@@ -29,6 +29,12 @@ complexNumber::complexNumber(const double &realPart, const double &imaginaryPart
     this->setValue(temp, temp2);
 }
 
+complexNumber::complexNumber(const int &realPart, const int &imaginaryPart)
+{
+    mixedNumber temp(realPart), temp2(imaginaryPart);
+    this->setValue(temp, temp2);
+}
+
 complexNumber& complexNumber::operator=(const complexNumber &other)
 {
     if(this != &other)
@@ -140,3 +146,16 @@ void complexNumber::setReal(const mixedNumber &a)
     num = a.getNum();
     denom = a.getDenom();
 }
+
+void complexNumber::setReal(const double &d)
+{
+    mixedNumber temp(d);
+    setReal(temp);
+}
+
+void complexNumber::setReal(const int &i)
+{
+    mixedNumber temp(i);
+    setReal(temp);
+}
+
