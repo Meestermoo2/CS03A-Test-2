@@ -11,9 +11,8 @@ std::ostream& operator<<(std::ostream& out, memories &m)
 
 std::istream& operator>>(std::istream& in, memories &m)
 {
-    std::string line, possiblyPoly;
-    std::stringstream ss, ss_poly;
-    complexNumber complex_temp;
+    std::string line;
+    std::stringstream ss;
     char junk;
     char index;
 
@@ -30,9 +29,8 @@ std::istream& operator>>(std::istream& in, memories &m)
         //throws away equals
         ss >> junk;
         //saves expresion as element of library(holds polynomials)
-        ss >> m.library[int(index-65)];
+        ss >> m.library[i];
         ss.clear();
-
     }
 
 
