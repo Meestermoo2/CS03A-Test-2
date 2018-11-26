@@ -29,6 +29,12 @@ complexNumber::complexNumber(const double &realPart, const double &imaginaryPart
     this->setValue(temp, temp2);
 }
 
+complexNumber::complexNumber(const int &realPart, const int &imaginaryPart)
+{
+    mixedNumber temp(realPart), temp2(imaginaryPart);
+    this->setValue(temp, temp2);
+}
+
 complexNumber& complexNumber::operator=(const complexNumber &other)
 {
     if(this != &other)

@@ -13,6 +13,7 @@ class complexNumber : public mixedNumber
         ~complexNumber();
         complexNumber(const mixedNumber &realPart, const mixedNumber &imaginaryPart);
         complexNumber(const double &realPart, const double &imaginaryPart);
+        complexNumber(const int &realPart, const int &imaginaryPart);
         complexNumber(const complexNumber &other);
 
         mixedNumber getReal() const;
