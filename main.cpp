@@ -24,7 +24,7 @@ void executeFile(string filename, string &userInput, int&count);
 //opens file, assigns command from file to userInput, closes file
 int main(int argc, char *argv[])
 {
-
+    driverProgram();
     introduction();
     bool CL = checkCL(argc);
     while(1)

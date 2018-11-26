@@ -15,6 +15,12 @@ complexNumber::complexNumber(const complexNumber &other)
     copy(other);
 }
 
+complexNumber::complexNumber(const complexNumber &mag, const complexNumber &rad)
+{ // constructs a complexNumber out of polar coordinate form
+    complexNumber temp;
+    temp.setReal(mag.getReal());
+}
+
 complexNumber::complexNumber(const mixedNumber &realPart, const mixedNumber &imaginaryPart)
 {
     num = realPart.getNum();
@@ -116,29 +122,12 @@ complexNumber complexNumber::conjugate() const
     return temp;
 }
 
-mixedNumber complexNumber::magnitude()
+mixedNumber complexNumber::magnitude() const
 {
-    mixedNumber temp, temp2, square, magnitude;
-    mixedNumber a,b,c;
+    mixedNumber temp = this->getReal(), temp2 = imaginary, magnitude;
 
-    temp = *this;
-    temp2 = imaginary;
-
-//    std::cout << "Temp: " << temp << std::endl;
-//    std::cout << "Temp2: " << temp2 << std::endl;
-
-    a = temp^2;
-    b= temp2^2;
-
-//    std::cout << a << std::endl;
-//    std::cout << b << std::endl;
-
-    square = a + b;
-
-//    std::cout << "The square is " << square<< std::endl;
-
-    magnitude = square.squareRoot();
-
+    magnitude = (temp^2) + (temp2^2);
+    magnitude = magnitude.squareRoot();
     return magnitude;
 }
 void complexNumber::setReal(const mixedNumber &a)
@@ -158,4 +147,17 @@ void complexNumber::setReal(const int &i)
     mixedNumber temp(i);
     setReal(temp);
 }
+
+void complexNumber::polarForm() const
+{
+    using namespace std;
+    complexNumber theta;
+
+    // to get theta, we use the formula arctan(b/a)
+    theta = imaginary/this->getReal();
+    theta = atan(theta.getDouble());
+
+    cout << '(' << this->magnitude() << ", " << theta << ')' << endl;
+}
+
 

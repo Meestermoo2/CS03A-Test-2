@@ -2,6 +2,9 @@
 #define COMPLEXNUMBER_H
 
 #include "mixednumber.h"
+#include <complex>
+#include <cmath>
+#include <iomanip>
 
 enum complexERRORS{INVALIDTYPE,INVALIDINPUT};
 
@@ -10,20 +13,24 @@ class complexNumber : public mixedNumber
     public:
         complexNumber();
         ~complexNumber();
-        complexNumber(const mixedNumber &realPart, const mixedNumber &imaginaryPart);
-        complexNumber(const double &realPart, const double &imaginaryPart);
-        complexNumber(const int &realPart, const int &imaginaryPart);
+        //complexNumber(const mixedNumber &real);
+        complexNumber(const mixedNumber &realPart, const mixedNumber &imaginaryPart = 0);
+        complexNumber(const double &realPart, const double &imaginaryPart = 0);
+        complexNumber(const int &realPart, const int &imaginaryPart = 0);
         complexNumber(const complexNumber &other);
+//        complexNumber(const )
 
         mixedNumber getReal() const;
         mixedNumber getImaginary() const;
-        mixedNumber magnitude();
+        mixedNumber magnitude() const;
         complexNumber conjugate() const;
 
         void setValue(const mixedNumber realPart, const mixedNumber imaginaryPart);
         void setReal(const mixedNumber &a);
         void setReal(const double &d);
         void setReal(const int &i);
+
+        void polarForm() const;
 
         complexNumber& operator=(const complexNumber &other);
         complexNumber& operator=(const mixedNumber &other);
