@@ -14,7 +14,7 @@ class memories
     public:
         memories();
         ~memories();
-        void choice(const std::string &input, const std::string &argument="");
+        void choice(const std::string &input, const std::string &argument="", bool saved);
         void clearLibrary();
         void display();
 
@@ -25,8 +25,6 @@ class memories
         void power(const int index, const int arg1, const int arg2);
 
         void conjugate(const int index, const int arg1);
-        void power(const int index, const int arg1, const int arg2);
-
         friend
         std::ostream& operator<<(std::ostream& out, memories &m);
 
@@ -36,7 +34,7 @@ class memories
     private:
         complexNumber library[26];
         void let(const std::string &arg);
-        void Exit(const std::string &arg);
+        void Exit(const std::string &arg, bool &saved);
         void print(const std::string &arg);
         void load(const std::string &arg);
         void save(const std::string arg);

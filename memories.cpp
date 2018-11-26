@@ -125,10 +125,36 @@ void memories::wexit(const std::string &arg)
         exit(1);
 }
 
-//void memories::exit(const std::string &arg)
-//{
+void memories::Exit(const std::string &arg, const bool &saved)
+{
+    char ans;
+    std::string filename;
+    if(!(saved))
+    {
+        std::cout << "Do you wish to save the data to a file? "<<std::endl;
+        std::cin >> ans;
 
-//}
+        char symbol;
+        do
+        {
+            std::cin.get(symbol);
+        } while (symbol != '\n');
+
+        if(ans == 'Y' || ans == 'y')
+        {
+            std::cout << "What is the name of the file? "<<std::endl;
+            getline(std::cin, filename);
+            save(filename);
+            std::cout <<"Thank You!" << std::endl;
+            exit(1);
+        }
+    }
+    else
+    {
+        std::cout << "Thank You!" << std::endl;
+        exit(1);
+    }
+}
 
 void memories::display()
 {
@@ -154,7 +180,7 @@ void memories::magnitude(const std::string &arg)
 }
 
 void memories::choice(const std::string &input,
-                        const std::string &argument)
+                        const std::string &argument, bool saved)
 { // Maps a given input to our predefined functions
     std:: string temp_str = "";
 
@@ -169,9 +195,9 @@ void memories::choice(const std::string &input,
             let(argument);
             break;
 
-//        case EXIT:
-//            exit(argument);
-//            break;
+        case EXIT:
+            Exit(argument, saved);
+            break;
 
         case WEXIT:
             wexit(argument);
@@ -208,6 +234,12 @@ void memories::choice(const std::string &input,
             throw INVALID_INPUT;
             break;// replace with throw error?
     }
+    if(temp_str == "SAVE")
+    {
+        saved = true;
+    }
+    else
+        saved = false;
 }
 
 void memories::add(const int index, const int arg1, const int arg2)

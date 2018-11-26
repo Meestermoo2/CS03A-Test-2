@@ -11,3 +11,4 @@ e.g (cout << c+d << endl)
 - error scraps all work
 - formatting
 - wexit with nothing after causes to save a name with the last input
+= throw an error if input goes outside data storage size

@@ -113,6 +113,7 @@ void getInput(istream& in, memories& a, char *commands[], int count,
     string userInput;
     string arg;
     char junk;
+    bool saved = false;
 
     int comCount=0;
     //reading from terminal
@@ -199,7 +200,7 @@ void getInput(istream& in, memories& a, char *commands[], int count,
                 //take expression
                 getline(user_ss, arg);
                 //passes it to choice function
-                a.choice(userInput, arg);
+                a.choice(userInput, arg, saved);
             }
 
         }
@@ -225,7 +226,7 @@ void getInput(istream& in, memories& a, char *commands[], int count,
             }
 
             //load expressions from file chosen
-            a.choice("load", filename);
+            a.choice("load", filename, saved);
 
             //goes back to reading user input from terminal after loading expressions
             getInput(cin, a, commands, count, false, false);
