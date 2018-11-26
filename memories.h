@@ -23,9 +23,7 @@ class memories
         void multiply(const int index, const int arg1, const int arg2);
         void divide(const int index, const int arg1, const int arg2);
         void power(const int index, const int arg1, const int arg2);
-
         void conjugate(const int index, const int arg1);
-        void power(const int index, const int arg1, const int arg2);
 
         friend
         std::ostream& operator<<(std::ostream& out, memories &m);

@@ -149,11 +149,8 @@ fraction fraction::squareRoot() const
 
 //    return guess;
 
-    fraction temp;
-    temp.num = sqrt(this->num);
-    temp.denom = sqrt(this->denom);
-
-    return temp;
+    double dnum = sqrt(num), ddenom = sqrt(denom);
+    return fraction(dnum/ddenom);
 }
 bool operator==(const fraction &x,const fraction &y)
 {
