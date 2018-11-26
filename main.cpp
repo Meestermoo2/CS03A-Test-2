@@ -288,7 +288,7 @@ void getInput(istream& in, memories& a, char *commands[], int count,
                 user_ss >> userInput;
                 user_ss.get(junk);
                 //take expression
-                getline(user_ss,arg);
+                getline(user_ss, arg);
                 //passes it to choice function
                 a.choice(userInput, arg);
             }
