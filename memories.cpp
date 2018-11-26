@@ -55,6 +55,7 @@ void memories::load(const std::string &arg)
       filename+= ".complex";
     in.open(filename);
     if((in.fail()))
+
     {
         std::cout << "The input file does not exist!" << std::endl;
     }

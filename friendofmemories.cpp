@@ -24,8 +24,7 @@ std::istream& operator>>(std::istream& in, memories &m)
         //puts in stream
         ss << line;
         //grabs index
-        ss >> index;
-        index = toupper(index);
+        ss >> index; //index unused
         //throws away equals
         ss >> junk;
         //saves expresion as element of library(holds polynomials)

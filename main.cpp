@@ -159,6 +159,8 @@ int main(int argc, char *argv[])
 
     }
     return 0;
+//    while(1)
+//    {
 //        try
 //        {
 //            while (1)
@@ -172,14 +174,14 @@ int main(int argc, char *argv[])
 //        {
 //            cout << "Error";
 //        }
+//    }
 }
 
 void introduction()
 {
     string border(80, '*');
-
     cout << border << endl;
-    cout << "This Program is called complexCalculate and it is an complexNumber Calculator /n that that will store up to 26 complex numbers." << endl;
+    cout << "This Program is called complexCalculate and it is an complexNumber Calculator \n that that will store up to 26 complex numbers." << endl;
     cout << border << endl;
 }
 bool checkCL(int count)
@@ -205,6 +207,7 @@ void getInput(istream& in, memories& a, char *commands[], int count,
 {
     string userInput;
     string arg;
+    char junk;
 
     int comCount=0;
     //reading from terminal
@@ -283,8 +286,9 @@ void getInput(istream& in, memories& a, char *commands[], int count,
             {
                 //take command
                 user_ss >> userInput;
+                user_ss.get(junk);
                 //take expression
-                user_ss >> arg;
+                getline(user_ss,arg);
                 //passes it to choice function
                 a.choice(userInput, arg);
             }
@@ -331,7 +335,6 @@ void getInput(istream& in, memories& a, char *commands[], int count,
 
             for (unsigned int i = 0; i < EXorRE.length(); ++i) // converts to uppercase
                 EXorRE[i] = toupper(EXorRE[i]);
-
 
             //second argument is a script file
             filename = commands[2];

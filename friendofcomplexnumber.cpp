@@ -50,7 +50,8 @@ std::istream& operator>>(std::istream &in, complexNumber&c)
             {
                 c.imaginary=(op == '-' ? -1:1); //if operator is negative,assign -1, otherwise 1
 //                std::cout << "buffer :" << in.rdbuf()->in_avail() << std::endl;
-                if (in.rdbuf()->in_avail() > 1) // if the buffer contains more than i..
+                in.get();
+                if (in.rdbuf()->in_avail() > 0) // if the buffer contains more than i..
                     throw INVALIDINPUT;
                 return in;
             } else
@@ -77,7 +78,8 @@ std::istream& operator>>(std::istream &in, complexNumber&c)
         if (in.peek() == 'i')
         {
             c.setValue(0,temp);
-            if (in.rdbuf()->in_avail() > 1) // if the buffer contains more than i..
+            in.get();
+            if (in.rdbuf()->in_avail() > 0) // if the buffer contains more than i..
                 throw INVALIDINPUT;
             return in;
         }
@@ -89,8 +91,9 @@ std::istream& operator>>(std::istream &in, complexNumber&c)
                 in >> op;
                 if (in.peek() == 'i')
                 {
+                    in.get();
                     c.imaginary=(op == '-' ? -1:1); //if operator is negative,assign -1, otherwise 1
-                    if (in.rdbuf()->in_avail() > 1) // if the buffer contains more than i..
+                    if (in.rdbuf()->in_avail() > 0) // if the buffer contains more than i..
                         throw INVALIDINPUT;
                     return in;
                 } else
@@ -100,11 +103,15 @@ std::istream& operator>>(std::istream &in, complexNumber&c)
                 if (in.peek() != 'i') //If i doesnt follow the input, throw an invalid type
                     throw INVALIDTYPE;
                 else
-                    if (in.rdbuf()->in_avail() > 1) // if the buffer contains more than i..
+                {
+                    in.get();
+                    if (in.rdbuf()->in_avail() > 0) // if the buffer contains more than i..
                         throw INVALIDINPUT;
+                }
             } else if (in.rdbuf()->in_avail() > 0)
                 throw INVALIDINPUT;
         }
+
     }
     return in;
 }
