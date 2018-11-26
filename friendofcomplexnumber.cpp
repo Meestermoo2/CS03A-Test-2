@@ -10,11 +10,16 @@ std::ostream& operator<<(std::ostream &out, complexNumber&c)
     if (c.imaginary != 0)
     {
         if (c.imaginary > 0 && c.getReal() !=0)
-            out << "+";
+            out << '+';
         if (c.imaginary != 1 && c.imaginary != -1)
             out << c.imaginary;
-        out << "i";
+        if (c.imaginary == -1)
+            out << '-';
+        out << 'i';
     }
+
+    if (c.imaginary == 0 && c.getReal() == 0)
+        out << '0';
 
     return out;
 }
@@ -35,24 +40,70 @@ std::istream& operator>>(std::istream &in, complexNumber&c)
     }
     else//Let's assume everything else is a file (for now)
     {
-        mixedNumber temp;
+        char op; //used to contain operators
+//        std::cout << "buffer :" << in.rdbuf()->in_avail() << std::endl;
+
+        if (in.peek() == '+' || in.peek() == '-') // catches instances of ("+i" or "-i")
+        {
+            in >> op; // nabs operator for negation below
+            if (in.peek() == 'i')
+            {
+                c.imaginary=(op == '-' ? -1:1); //if operator is negative,assign -1, otherwise 1
+//                std::cout << "buffer :" << in.rdbuf()->in_avail() << std::endl;
+                if (in.rdbuf()->in_avail() > 1) // if the buffer contains more than i..
+                    throw INVALIDINPUT;
+                return in;
+            } else
+                in.rdbuf()->sputbackc(op); // putback the operator if no 'i' was found
+        }
+//        std::cout << "buffer :" << in.rdbuf()->in_avail() << std::endl;
+
+        if (in.peek() == 'i') // catches instances of i by itself ("i")
+        {
+            c.imaginary=1;
+            // There is an odd interaction where if you input ("i21312" it will only return 1 for the buffer size. I believe this has to do with datatypes and their respective sizes)
+            in >> op; // in pulling out the i to check empty buffer
+//            std::cout << "buffer :" << in.rdbuf()->in_avail() << std::endl;
+            if (in.rdbuf()->in_avail() > 0) // if the buffer contains more than i..
+                throw INVALIDINPUT;
+            return in;
+        }
+
+        mixedNumber temp; // Start taking numbers
         in >> temp;
 
+//        std::cout << in.rdbuf()->in_avail();
 
         if (in.peek() == 'i')
         {
             c.setValue(0,temp);
+            if (in.rdbuf()->in_avail() > 1) // if the buffer contains more than i..
+                throw INVALIDINPUT;
             return in;
         }
         else
         {
             c.setReal(temp);
             if (in.peek() == '+' || in.peek() == '-')
-            {
+            { // If an operator is found, assume there is a number that follows
+                in >> op;
+                if (in.peek() == 'i')
+                {
+                    c.imaginary=(op == '-' ? -1:1); //if operator is negative,assign -1, otherwise 1
+                    if (in.rdbuf()->in_avail() > 1) // if the buffer contains more than i..
+                        throw INVALIDINPUT;
+                    return in;
+                } else
+                    in.rdbuf()->sputbackc(op);
+
                 in>>c.imaginary;
-                if (in.peek() != 'i')
+                if (in.peek() != 'i') //If i doesnt follow the input, throw an invalid type
                     throw INVALIDTYPE;
-            }
+                else
+                    if (in.rdbuf()->in_avail() > 1) // if the buffer contains more than i..
+                        throw INVALIDINPUT;
+            } else if (in.rdbuf()->in_avail() > 0)
+                throw INVALIDINPUT;
         }
     }
     return in;

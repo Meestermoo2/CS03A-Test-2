@@ -63,9 +63,9 @@ void memories::save(std::string arg)
 void memories::display()
 {
     for(unsigned int i = 0; i < 26; ++i)
-    {
-        std::cout<< (char)(i+65) << " = " << library[i] << std::endl;
-    }
+        std::cout<< static_cast<char>(i+65)
+                  << " = " << library[i] << std::endl;
+
     std::cout << std::endl;
 }
 

@@ -100,10 +100,24 @@ int main()
                 cin >> a;
                 cout << "Your complex number is: "<< a;
             }
-        }catch(...)
+        }catch(complexERRORS e)
         {
-            cout << "Error";
+            switch(e) {
+            case INVALIDINPUT:
+                cout << "User has entered an invalid input";
+                break;
+            case INVALIDTYPE:
+                cout << "Invalid Type" << endl;
+                break;
+            default:
+                cout << "An unknown error has occured" << endl;
+            }
         }
+        catch (...)
+        {
+            cout << "an unknown error has occured" << endl;
+        }
+
     }
 
 
