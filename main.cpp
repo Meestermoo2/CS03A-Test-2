@@ -205,6 +205,7 @@ void getInput(istream& in, memories& a, char *commands[], int count,
 {
     string userInput;
     string arg;
+    char junk;
 
     int comCount=0;
     //reading from terminal
@@ -283,8 +284,9 @@ void getInput(istream& in, memories& a, char *commands[], int count,
             {
                 //take command
                 user_ss >> userInput;
+                user_ss.get(junk);
                 //take expression
-                user_ss >> arg;
+                getline(user_ss, arg);
                 //passes it to choice function
                 a.choice(userInput, arg);
             }
