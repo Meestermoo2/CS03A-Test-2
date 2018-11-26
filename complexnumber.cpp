@@ -146,3 +146,16 @@ void complexNumber::setReal(const mixedNumber &a)
     num = a.getNum();
     denom = a.getDenom();
 }
+
+void complexNumber::setReal(const double &d)
+{
+    mixedNumber temp(d);
+    setReal(temp);
+}
+
+void complexNumber::setReal(const int &i)
+{
+    mixedNumber temp(i);
+    setReal(temp);
+}
+
