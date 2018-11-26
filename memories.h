@@ -6,7 +6,7 @@
 enum memories_ERRORS {INVALID_INPUT};
 class memories
 {
-    enum commands {LET, LOAD, SAVE, PRINT, EXIT, WEXIT, MAGNITUDE, TRIG, DISPLAY};
+    enum commands {LET, LOAD, SAVE, PRINT, EXIT, WEXIT, MAGNITUDE, TRIG, DISPLAY, CLEAR};
 
     std::map<std::string, memories::commands> commandMap;
     void initializeMap();
@@ -34,11 +34,12 @@ class memories
     private:
         complexNumber library[26];
         void let(const std::string &arg);
-        void exit(const std::string &arg);
+        void Exit(const std::string &arg);
         void print(const std::string &arg);
         void load(const std::string &arg);
-        void save(std::string arg);
+        void save(const std::string arg);
         void wexit(const std::string &arg);
+        void magnitude(const std::string &arg);
 
 
 };

@@ -25,12 +25,12 @@ std::istream& operator>>(std::istream& in, memories &m)
         ss << line;
         //grabs index
         ss >> index;
-        index = toupper(index);
         //throws away equals
         ss >> junk;
         //saves expresion as element of library(holds polynomials)
         ss >> m.library[i];
         ss.clear();
+
     }
 
 

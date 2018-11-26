@@ -1,4 +1,5 @@
 #include "memories.h"
+#include <cstdlib>
 
 memories::memories()
 {
@@ -22,6 +23,19 @@ void memories::clearLibrary()
     }
 }
 
+void memories::initializeMap()
+{
+    commandMap["let"] = LET;
+    commandMap["print"] = PRINT;
+    commandMap["load"] = LOAD;
+    commandMap["save"] = SAVE;
+    commandMap["exit"] = EXIT;
+    commandMap["display"] = DISPLAY;
+    commandMap["wexit"] = WEXIT;
+    commandMap["magnitude"] = MAGNITUDE;
+    commandMap["trig"] = TRIG;
+    commandMap["clear"] = CLEAR;
+}
 void memories::let(const std::string &arg)
 { // Configures an given expression derived from arg to a poly, also derived
   // from arg. E.g. "F=3X^3" etc.
@@ -64,7 +78,7 @@ void memories::load(const std::string &arg)
         std::cout << "The file \"" << filename << "\" was loaded! \n";
     }
 }
-void memories::save(std::string arg)
+void memories::save(const std::string arg)
 { // Saves current expression library to file while checking for existing file
     std::ofstream out;
     std::ifstream in;
@@ -103,6 +117,17 @@ void memories::save(std::string arg)
     std::cout << "Save successful." << std::endl;
 }
 
+void memories::wexit(const std::string &arg)
+{
+        save(arg);
+        exit(1);
+}
+
+//void memories::exit(const std::string &arg)
+//{
+
+//}
+
 void memories::display()
 {
     for(unsigned int i = 0; i < 26; ++i)
@@ -117,17 +142,9 @@ void memories::print(const std::string &arg)
     std:: cout << arg[0] << " = "<< library[toupper(arg[0])-65] << std::endl;
 }
 
-void memories::initializeMap()
+void memories::magnitude(const std::string &arg)
 {
-    commandMap["let"] = LET;
-    commandMap["print"] = PRINT;
-    commandMap["load"] = LOAD;
-    commandMap["save"] = SAVE;
-    commandMap["exit"] = EXIT;
-    commandMap["display"] = DISPLAY;
-    commandMap["wexit"] = WEXIT;
-    commandMap["magnitude"] = MAGNITUDE;
-    commandMap["trig"] = TRIG;
+    std:: cout << "The magnitude of " << arg[0] << " is equal to "<< library[toupper(arg[0])-65].magnitude() << std::endl;
 }
 
 void memories::choice(const std::string &input,
@@ -149,9 +166,12 @@ void memories::choice(const std::string &input,
 //        case EXIT:
 //            exit(argument);
 //            break;
-//        case wexit:
-//            wexit(argument);
-//            break;
+        case WEXIT:
+            wexit(argument);
+            break;
+        case CLEAR:
+            clearLibrary();
+            break;
 
 //        case TRIG
 //             trig();
@@ -173,9 +193,9 @@ void memories::choice(const std::string &input,
             display();
             break;
 
-//        case MAGNITUDE:
-//             magnitude();
-//            break;
+        case MAGNITUDE:
+             magnitude(argument);
+             break;
 
         default:
             throw INVALID_INPUT;

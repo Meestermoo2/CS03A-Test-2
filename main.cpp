@@ -246,8 +246,8 @@ void getInput(istream& in, memories& a, char *commands[], int count,
                 char index, b, c;
                 int deriv_count(0);
 
-                index = userInput[0]; // takes initial element as variable for poly a
-                b = userInput[2]; // takes 3rd element as letter for poly b
+                index = toupper(userInput[0]); // takes initial element as variable for poly a
+                b = toupper(userInput[2]); // takes 3rd element as letter for poly b
 
                 //for derivative calculator (ex F=G')
                 if (userInput[3] == '~')
@@ -257,7 +257,7 @@ void getInput(istream& in, memories& a, char *commands[], int count,
                 //for expresison calculator (ex F=G+H)
                 else
                 {
-                    c=userInput[4];
+                    c= toupper(userInput[4]);
 
                     //switch that depends on operator
                     switch (userInput[3])
@@ -272,6 +272,7 @@ void getInput(istream& in, memories& a, char *commands[], int count,
                         a.multiply(index-65, b-65, c-65);
                         break;
                     case '/':
+                        a.divide(index-65, b-65, c-65);
                         break;
                     default:
                         cout << "Error " << endl;

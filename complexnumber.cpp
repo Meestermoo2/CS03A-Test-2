@@ -129,7 +129,6 @@ mixedNumber complexNumber::magnitude()
 
     return magnitude;
 }
-
 void complexNumber::setReal(const mixedNumber &a)
 {
     num = a.getNum();
