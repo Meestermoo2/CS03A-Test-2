@@ -24,7 +24,7 @@ void executeFile(string filename, string &userInput, int&count);
 //opens file, assigns command from file to userInput, closes file
 int main(int argc, char *argv[])
 {
-    driverProgram();
+//    driverProgram();
     introduction();
     bool CL = checkCL(argc);
     while(1)
@@ -194,6 +194,7 @@ void getInput(istream& in, memories& a, char *commands[], int count,
             //if a command preceeds the expression (ex. Let F=2X+4)
             else
             {
+                std:: string temp_str = "";
                 //take command
                 user_ss >> userInput;
                 user_ss.get(junk);
@@ -201,6 +202,18 @@ void getInput(istream& in, memories& a, char *commands[], int count,
                 getline(user_ss, arg);
                 //passes it to choice function
                 a.choice(userInput, arg, saved);
+
+                for (unsigned int i = 0; i < userInput.length(); ++i)
+                {
+                    temp_str += tolower(userInput[i]);
+                }
+
+                if(temp_str == "save")
+                {
+                    saved = true;
+                }
+                else
+                    saved = false;
             }
 
         }

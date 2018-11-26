@@ -149,11 +149,8 @@ void memories::Exit(const std::string &arg, const bool &saved)
             exit(1);
         }
     }
-    else
-    {
-        std::cout << "Thank You!" << std::endl;
-        exit(1);
-    }
+    std::cout << "Thank You!" << std::endl;
+    exit(1);
 }
 
 void memories::display()
@@ -234,12 +231,6 @@ void memories::choice(const std::string &input,
             throw INVALID_INPUT;
             break;// replace with throw error?
     }
-    if(temp_str == "SAVE")
-    {
-        saved = true;
-    }
-    else
-        saved = false;
 }
 
 void memories::add(const int index, const int arg1, const int arg2)
