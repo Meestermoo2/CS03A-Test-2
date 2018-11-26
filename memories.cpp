@@ -136,7 +136,7 @@ void memories::display()
     {
         if(i%2 == 0)
             std::cout << std::endl;
-        std::cout << static_cast<char>(i+65)
+        std::cout << std::setw(15) << static_cast<char>(i+65)
                   << " = " << library[i];
     }
 
