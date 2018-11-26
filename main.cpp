@@ -104,71 +104,74 @@ int main(int argc, char *argv[])
 //    l = h.magnitude();
 //    cout << "The magnitude of l is " << l << endl;
 
-    introduction();
-    bool CL = checkCL(argc);
-    while(1)
-    {
-       try
-        {
-            memories a;
-            ifstream in;
-
-            if(CL)
-                getInput(in, a, argv, argc); //if parameters in command line, we're reading from a file
-            else
-                getInput(cin, a, argv, argc); //read straight from the terminal
-
-        }
-        catch (fraction_ERRORS e)
-        {
-            switch(e)
-            {
-                case DivByZero :
-                    cout << "Division by zero" << endl;
-                    break;
-                case Invalid_Type :
-                    cout << "Invalid type was entered" << endl;
-                    break;
-            }
-        }
-        catch (mixedNumber_ERRORS f)
-        {
-            switch(f)
-            {
-                case improper_mixed :
-                    cout << "Improper Mixed Number" << endl;
-                    break;
-            }
-        }
-        catch (memories_ERRORS g)
-        {
-            switch(g)
-            {
-                case INVALID_INPUT :
-                    cout << "Invalid Input" << endl;
-                    break;
-            }
-        }
-        catch(...)
-        {
-            cout << "An unknown error occurred" << endl;
-            break;
-        }
-    }
-    return 0;
-//        try
+//    introduction();
+//    bool CL = checkCL(argc);
+//    while(1)
+//    {
+//       try
 //        {
-//            while (1)
-//            {
-//                complexNumber a;
-//                cout << "\nInput a complex number: ";
-//                cin >> a;
-//                cout << "Your complex number is: "<< a;
-//            }
-//        }catch(...)
-//        {
-//            cout << "Error";
+//            memories a;
+//            ifstream in;
+
+//            if(CL)
+//                getInput(in, a, argv, argc); //if parameters in command line, we're reading from a file
+//            else
+//                getInput(cin, a, argv, argc); //read straight from the terminal
+
 //        }
+//        catch (fraction_ERRORS e)
+//        {
+//            switch(e)
+//            {
+//                case DivByZero :
+//                    cout << "Division by zero" << endl;
+//                    break;
+//                case Invalid_Type :
+//                    cout << "Invalid type was entered" << endl;
+//                    break;
+//            }
+//        }
+//        catch (mixedNumber_ERRORS f)
+//        {
+//            switch(f)
+//            {
+//                case improper_mixed :
+//                    cout << "Improper Mixed Number" << endl;
+//                    break;
+//            }
+//        }catch(complexERRORS e)
+//        {
+//            switch(e) {
+//            case INVALIDINPUT:
+//                cout << "User has entered an invalid input";
+//                break;
+//            case INVALIDTYPE:
+//                cout << "Invalid Type" << endl;
+//                break;
+//            default:
+//                cout << "An unknown error has occured" << endl;
+//            }
+//        }
+//        catch (...)
+//        {
+//            cout << "an unknown error has occured" << endl;
+//        }
+
+//    }
+//    return 0;
+        try
+        {
+            while (1)
+            {
+                complexNumber a;
+                cout << "\nInput a complex number: ";
+                cin >> a;
+                cout << "Your complex number is: "<< a;
+            }
+        }catch(...)
+        {
+            cout << "Error";
+        }
 }
 
 void introduction()

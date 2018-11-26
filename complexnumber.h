@@ -3,7 +3,7 @@
 
 #include "mixednumber.h"
 
-enum complexERRORS{INVALIDTYPE};
+enum complexERRORS{INVALIDTYPE,INVALIDINPUT};
 
 class complexNumber : public mixedNumber
 {
