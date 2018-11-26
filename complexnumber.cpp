@@ -15,6 +15,12 @@ complexNumber::complexNumber(const complexNumber &other)
     copy(other);
 }
 
+complexNumber::complexNumber(const complexNumber &mag, const complexNumber &rad)
+{ // constructs a complexNumber out of polar coordinate form
+    complexNumber temp;
+    temp.setReal(mag.getReal());
+}
+
 complexNumber::complexNumber(const mixedNumber &realPart, const mixedNumber &imaginaryPart)
 {
     num = realPart.getNum();
@@ -147,9 +153,11 @@ void complexNumber::polarForm() const
     using namespace std;
     complexNumber theta;
 
+    // to get theta, we use the formula arctan(b/a)
     theta = imaginary/this->getReal();
+    theta = atan(theta.getDouble());
 
-    cout << '(' << this->magnitude() << "," << atan(theta.getDouble()) << ')' << endl;
+    cout << '(' << this->magnitude() << ", " << theta << ')' << endl;
 }
 
 
