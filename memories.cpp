@@ -41,15 +41,18 @@ void memories::let(const std::string &arg)
 { // Configures an given expression derived from arg to a poly, also derived
   // from arg. E.g. "F=3X^3" etc.
     std::stringstream temp;
+    std::string index2 = "";
     char index; // Holds first char to be used as index
     char junk; // Will hold '='
 
     temp << arg;
     temp >> index >> junk;
     index = toupper(index);
+    index2 += index;
+    if(index2.find_first_not_of("ABCDEFGHIJKLMNOPQRSTUVWXYZ")<index2.size())
+            throw INVALID_INPUT;
 
-    mixedNumber a(0), c(0);
-    complexNumber b(a,c);
+    complexNumber b;
     library[index-65] = b; // Sets the destination expression to zero before insertion
     temp >> library[index-65];
 
@@ -157,10 +160,8 @@ void memories::display()
 {
     for(unsigned int i = 0; i < 26; ++i)
     {
-        if(i%2 == 0)
-            std::cout << std::endl;
-        std::cout << std::setw(15) << static_cast<char>(i+65)
-                  << " = " << library[i];
+        std::cout << static_cast<char>(i+65)
+                  << " = " << library[i] << std::endl;;
     }
 
     std::cout << std::endl;
@@ -192,49 +193,46 @@ void memories::choice(const std::string &input,
 
     switch(commandMap[temp_str])
     {
-        case LET:
-            let(argument);
-            break;
+    case LET:
+        let(argument);
+        break;
 
-        case EXIT:
-            Exit(argument, saved);
-            break;
+    case EXIT:
+        Exit(argument, saved);
+        break;
 
-        case WEXIT:
-            wexit(argument);
-            break;
-        case CLEAR:
-            clearLibrary();
-            break;
+    case WEXIT:
+        wexit(argument);
+        break;
+    case CLEAR:
+        clearLibrary();
+        break;
 
-        case TRIG:
-            trig(argument);
-            break;
+    case TRIG:
+        trig(argument);
+        break;
 
-        case PRINT:
-            print(argument);
-            break;
+    case PRINT:
+        print(argument);
+        break;
 
-        case LOAD:
-            load(argument);
-            break;
+    case LOAD:
+        load(argument);
+        break;
 
-        case SAVE:
-            save(argument);
-            break;
+    case SAVE:
+        save(argument);
+        break;
 
-        case DISPLAY:
-            display();
-            break;
+    case DISPLAY:
+        display();
+        break;
 
-        case MAGNITUDE:
-             magnitude(argument);
-             break;
-
-        default:
-            throw INVALID_INPUT;
-            break;// replace with throw error?
+    case MAGNITUDE:
+        magnitude(argument);
+        break;
     }
+
 }
 
 void memories::add(const int index, const int arg1, const int arg2)

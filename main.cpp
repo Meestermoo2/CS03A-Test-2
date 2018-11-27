@@ -26,12 +26,12 @@ int main(int argc, char *argv[])
 {
 //    driverProgram();
     introduction();
+    memories a;
     bool CL = checkCL(argc);
     while(1)
     {
        try
         {
-            memories a;
             ifstream in;
 
             if(CL)
@@ -44,11 +44,11 @@ int main(int argc, char *argv[])
         {
             switch(e)
             {
-                case DivByZero :
+                case DIVBYZERO :
                     cout << "Division by zero" << endl;
                     break;
-                case Invalid_Type :
-                    cout << "Invalid type was entered" << endl;
+                case INVALIDFRACTION:
+                    cout << "Invalid fraction was entered" << endl;
                     break;
             }
         }
@@ -56,21 +56,28 @@ int main(int argc, char *argv[])
         {
             switch(f)
             {
-                case improper_mixed :
+                case INVALIDMIXED :
                     cout << "Improper Mixed Number" << endl;
                     break;
             }
-        }catch(complexERRORS e)
+        }catch(complexERRORS g)
         {
-            switch(e) {
-            case INVALIDINPUT:
-                cout << "User has entered an invalid input";
-                break;
+            switch(g) {
             case INVALIDTYPE:
-                cout << "Invalid Type" << endl;
+                cout << "Extraneous input entered from user" << endl;
                 break;
-            default:
-                cout << "An unknown error has occured" << endl;
+            case INVALIDCOMPLEX:
+                cout << "Invalid complex number" << endl;
+                break;
+            }
+        }
+        catch(memories_ERRORS h)
+        {
+            switch(h)
+            {
+                case INVALID_INPUT:
+                    cout << "You entered an invalid input" << endl;
+                    break;
             }
         }
         catch (...)
@@ -152,8 +159,9 @@ void getInput(istream& in, memories& a, char *commands[], int count,
             if (userInput[1]=='=')
             {
                 char index, b, c;
+                string index2 = "";
 
-                index = toupper(userInput[0]); // takes initial element as variable for poly a
+                index = toupper(userInput[0]);// takes initial element as variable for poly a
                 b = toupper(userInput[2]);// takes 3rd element as letter for poly b
 
                 //for derivative calculator (ex F=G')
@@ -207,7 +215,7 @@ void getInput(istream& in, memories& a, char *commands[], int count,
                     {
                         user_ss.get();
                         if (user_ss.rdbuf()->in_avail() > 0) // if the buffer contains more than i..
-                            throw INVALIDINPUT;
+                            throw INVALID_INPUT;
                     }
                     arg = toupper(arg[0]);
                     a.choice(userInput, arg, saved);

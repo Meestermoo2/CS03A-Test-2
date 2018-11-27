@@ -19,7 +19,7 @@ std::istream& operator>>(std::istream& in, fraction &frac)
         if(in>>possibleFraction)
         {
             if(possibleFraction.find_first_not_of("-+0123456789./") < possibleFraction.size())
-                throw Invalid_Type;
+                throw INVALIDFRACTION;
             ss<<possibleFraction;
             ss>>frac;
         }
@@ -38,7 +38,7 @@ std::istream& operator>>(std::istream& in, fraction &frac)
         {
             double temp;
             if (!(in >> temp))
-                throw Invalid_Type;
+                throw INVALIDFRACTION;
 
             temp = temp + frac.num;
 
@@ -50,7 +50,7 @@ std::istream& operator>>(std::istream& in, fraction &frac)
             frac.reduce();
         }
         else if (!(in>>frac.num))
-            throw Invalid_Type;
+            throw INVALIDFRACTION;
         else{
             if (in.peek() == '/')
             {
@@ -58,15 +58,15 @@ std::istream& operator>>(std::istream& in, fraction &frac)
                     frac.num *= -1;
                 in >> junk;
                 if (!(in>>frac.denom))
-                    throw Invalid_Type;
+                    throw INVALIDFRACTION;
                 if (frac.denom == 0)
-                    throw DivByZero;
+                    throw DIVBYZERO;
                 frac.reduce();
             } else if (in.peek() == '.') // Example "0.5"
             {
                 double temp;
                 if (!(in >> temp))
-                    throw Invalid_Type;
+                    throw INVALIDFRACTION;
 
                 temp = temp + frac.num;
 

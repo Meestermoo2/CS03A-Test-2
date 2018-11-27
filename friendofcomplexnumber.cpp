@@ -34,7 +34,7 @@ std::istream& operator>>(std::istream &in, complexNumber&c)
     {
         std::getline(in, possibleComplex);
         if(possibleComplex.find_first_not_of("-+0123456789./i ") < possibleComplex.size())
-            throw INVALIDTYPE;
+            throw INVALIDCOMPLEX;
         ss<<possibleComplex;
         ss>>c;
 
@@ -53,7 +53,7 @@ std::istream& operator>>(std::istream &in, complexNumber&c)
 //                std::cout << "buffer :" << in.rdbuf()->in_avail() << std::endl;
                 in.get();
                 if (in.rdbuf()->in_avail() > 0) // if the buffer contains more than i..
-                    throw INVALIDINPUT;
+                    throw INVALIDTYPE;
                 return in;
             } else
                 in.rdbuf()->sputbackc(op); // putback the operator if no 'i' was found
@@ -67,7 +67,7 @@ std::istream& operator>>(std::istream &in, complexNumber&c)
             in >> op; // in pulling out the i to check empty buffer
 //            std::cout << "buffer :" << in.rdbuf()->in_avail() << std::endl;
             if (in.rdbuf()->in_avail() > 0) // if the buffer contains more than i..
-                throw INVALIDINPUT;
+                throw INVALIDTYPE;
             return in;
         }
 
@@ -81,7 +81,7 @@ std::istream& operator>>(std::istream &in, complexNumber&c)
             c.setValue(0,temp);
             in.get();
             if (in.rdbuf()->in_avail() > 0) // if the buffer contains more than i..
-                throw INVALIDINPUT;
+                throw INVALIDTYPE;
             return in;
         }
         else
@@ -95,22 +95,22 @@ std::istream& operator>>(std::istream &in, complexNumber&c)
                     in.get();
                     c.imaginary=(op == '-' ? -1:1); //if operator is negative,assign -1, otherwise 1
                     if (in.rdbuf()->in_avail() > 0) // if the buffer contains more than i..
-                        throw INVALIDINPUT;
+                        throw INVALIDTYPE;
                     return in;
                 } else
                     in.rdbuf()->sputbackc(op);
 
                 in>>c.imaginary;
                 if (in.peek() != 'i') //If i doesnt follow the input, throw an invalid type
-                    throw INVALIDTYPE;
+                    throw INVALIDCOMPLEX;
                 else
                 {
                     in.get();
                     if (in.rdbuf()->in_avail() > 0) // if the buffer contains more than i..
-                        throw INVALIDINPUT;
+                        throw INVALIDTYPE;
                 }
             } else if (in.rdbuf()->in_avail() > 0)
-                throw INVALIDINPUT;
+                throw INVALIDTYPE;
         }
 
     }

@@ -1,16 +1,16 @@
 - cannot directly output the addition of 2 complex numbers. output only shows a mixed number
 e.g (cout << c+d << endl)
--set values for mixedNumber allows for improper values
-- need to add cin logic for mixedNum
 - need to getline in insertion or mixedNum?
 - error out when taking unecessary input (21 3/4 4)
 - error handlging (3-2 evaluates to 3-2i), (3+3)
 - 3 4/5 + 4i should result in error
 - need to scrap bad input
 - magnitude evaluates to integer
-- error scraps all work
 - formatting
 - wexit with nothing after causes to save a name with the last input
 = throw an error if input goes outside data storage size
 = throw if unknown command is entered
 - let ?, fucking throw an error
+
+//Features to add
+- letting one variable equal another

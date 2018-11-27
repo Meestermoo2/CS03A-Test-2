@@ -6,7 +6,7 @@
 #include <cmath>
 #include <iomanip>
 
-enum complexERRORS{INVALIDTYPE,INVALIDINPUT};
+enum complexERRORS{INVALIDCOMPLEX, INVALIDTYPE};
 
 class complexNumber : public mixedNumber
 {
