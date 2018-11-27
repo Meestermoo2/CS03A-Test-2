@@ -149,11 +149,8 @@ void memories::Exit(const std::string &arg, const bool &saved)
             exit(1);
         }
     }
-    else
-    {
-        std::cout << "Thank You!" << std::endl;
-        exit(1);
-    }
+    std::cout << "Thank You!" << std::endl;
+    exit(1);
 }
 
 void memories::display()
@@ -179,6 +176,10 @@ void memories::magnitude(const std::string &arg)
     std:: cout << "The magnitude of " << arg[0] << " is equal to "<< library[toupper(arg[0])-65].magnitude() << std::endl;
 }
 
+void memories::trig(const std::string &arg)
+{
+    library[int(arg[0]-65)].polarForm();
+}
 void memories::choice(const std::string &input,
                         const std::string &argument, bool saved)
 { // Maps a given input to our predefined functions
@@ -206,9 +207,9 @@ void memories::choice(const std::string &input,
             clearLibrary();
             break;
 
-//        case TRIG
-//             trig();
-//             break
+        case TRIG:
+            trig(argument);
+            break;
 
         case PRINT:
             print(argument);
@@ -234,12 +235,6 @@ void memories::choice(const std::string &input,
             throw INVALID_INPUT;
             break;// replace with throw error?
     }
-    if(temp_str == "SAVE")
-    {
-        saved = true;
-    }
-    else
-        saved = false;
 }
 
 void memories::add(const int index, const int arg1, const int arg2)

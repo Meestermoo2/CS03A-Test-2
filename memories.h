@@ -14,7 +14,8 @@ class memories
     public:
         memories();
         ~memories();
-        void choice(const std::string &input, const std::string &argument="", const bool &saved);
+
+        void choice(const std::string &input, const std::string &argument="", bool saved = false);
         void clearLibrary();
         void display();
 
@@ -34,12 +35,13 @@ class memories
     private:
         complexNumber library[26];
         void let(const std::string &arg);
-        void Exit(const std::string &arg, bool &saved);
+        void Exit(const std::string &arg, const bool &saved);
         void print(const std::string &arg);
         void load(const std::string &arg);
         void save(const std::string arg);
         void wexit(const std::string &arg);
         void magnitude(const std::string &arg);
+        void trig(const std::string &arg);
 
 };
 
