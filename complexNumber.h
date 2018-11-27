@@ -1,7 +1,7 @@
 #ifndef COMPLEXNUMBER_H
 #define COMPLEXNUMBER_H
 
-#include "mixednumber.h"
+#include "mixedNumber.h"
 #include <complex>
 #include <cmath>
 #include <iomanip>

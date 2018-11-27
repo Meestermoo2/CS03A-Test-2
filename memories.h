@@ -1,6 +1,6 @@
 #ifndef MEMORIES_H
 #define MEMORIES_H
-#include "complexnumber.h"
+#include "complexNumber.h"
 #include <map>
 
 enum memories_ERRORS {INVALID_INPUT};

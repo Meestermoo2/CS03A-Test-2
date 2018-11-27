@@ -1,4 +1,4 @@
-#include "complexnumber.h"
+#include "complexNumber.h"
 #include <complex>
 
 std::ostream& operator<<(std::ostream &out, complexNumber&c)
