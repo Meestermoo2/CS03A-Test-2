@@ -130,6 +130,29 @@ mixedNumber complexNumber::magnitude() const
     magnitude = magnitude.squareRoot();
     return magnitude;
 }
+
+mixedNumber complexNumber::angle() const
+{
+    using namespace std;
+    complexNumber theta;
+
+    // to get theta, we use the formula arctan(b/a)
+    if(this->getReal() == 0)
+    {
+        theta = 1.570796327;
+    }
+    else
+    {
+//      theta = imaginary/this->getReal();
+//      if(this->getReal() <0)
+//      {
+//          theta = atan2(imaginary.getDouble(), this->getReal().getDouble()) + 3.14159265;
+//      }
+      theta = atan2(imaginary.getDouble(), this->getReal().getDouble());
+    }
+
+    return theta;
+}
 void complexNumber::setReal(const mixedNumber &a)
 {
     num = a.getNum();
@@ -148,16 +171,10 @@ void complexNumber::setReal(const int &i)
     setReal(temp);
 }
 
+
 void complexNumber::polarForm() const
 {
-    using namespace std;
-    complexNumber theta;
-
-    // to get theta, we use the formula arctan(b/a)
-    theta = imaginary/this->getReal();
-    theta = atan(theta.getDouble());
-
-    cout << '(' << this->magnitude() << ", " << theta << ')' << endl;
+    std::cout << '(' << this->magnitude() << ", " << this->angle() << ')' << std::endl;
 }
 
 

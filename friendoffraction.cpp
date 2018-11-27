@@ -1,5 +1,6 @@
 #include "fraction.h"
 #include <cmath>
+#include <limits>
 
 std::ostream& operator<<(std::ostream& out, const fraction &frac)
 {
@@ -97,8 +98,15 @@ fraction operator+(const fraction &x,const fraction &y)
 
 fraction operator-(const fraction &x,const fraction &y)
 {
+    using namespace std;
+    std::numeric_limits<int>::max();
     fraction result;
-    int num = x.num * y.denom - y.num  * x.denom,
+    unsigned int temp1 = x.num*y.denom;
+    cout << temp1 << endl;
+    unsigned int temp2 = y.num*x.denom;
+    cout << temp2 << endl;
+
+    unsigned int num = temp1 - temp2,
         denom = x.denom * y.denom;
     result.setValue(num,denom);
     return result;

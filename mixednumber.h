@@ -22,6 +22,7 @@ class mixedNumber : public fraction
 
         void getValues(int &w, int &n, int &d);
         void setValues(int w, int n, int d);
+        mixedNumber abs() const;
 
         friend
         std::ostream& operator<<( std::ostream &out, const mixedNumber &m);

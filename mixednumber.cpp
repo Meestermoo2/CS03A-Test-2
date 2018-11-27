@@ -64,6 +64,16 @@ void mixedNumber::getValues(int &w, int &n, int &d)
     d = denom;
 }
 
+mixedNumber mixedNumber::abs() const
+{
+    int tempnum;
+    mixedNumber temp;
+    if(this->getNum() < 0 || this->getDenom() < 0)
+        tempnum = this->getNum() * -1;
+    temp.num = tempnum;
+    temp.denom = this->getDenom();
+    return temp;
+}
 void mixedNumber::setValues(int w, int n, int d)
 {
     if (w < 0)

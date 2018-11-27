@@ -181,6 +181,7 @@ void memories::trig(const std::string &arg)
 {
     library[int(arg[0]-65)].polarForm();
 }
+
 void memories::choice(const std::string &input,
                         const std::string &argument, bool saved)
 { // Maps a given input to our predefined functions
@@ -264,4 +265,28 @@ void memories::power(const int index, const int arg1, const int arg2)
 {
     library[index] = library[arg1]^library[arg2];
     std::cout << std::endl << char(index+65) << "=" << library[index] << std::endl;
+}
+void memories::orthogonality(const int arg1, const int arg2)
+{
+    using namespace std;
+    mixedNumber mag_arg1, mag_arg2, angle_arg1, angle_arg2, diffOfAngles, dotProduct;
+
+    mag_arg1 = library[arg1].magnitude();
+    angle_arg1 = library[arg1].angle();
+    cout << angle_arg1 << endl;
+
+    mag_arg2 = library[arg2].magnitude();
+    angle_arg2 = library[arg2].angle();
+    cout << angle_arg2<<endl;
+
+    diffOfAngles = angle_arg1.getDouble() - angle_arg2.getDouble();
+    //z1 dot z2 = |z1||z2|cos(arg(z1)-arg(z2))
+
+    dotProduct = mag_arg1.abs() * mag_arg2.abs() *round(cos(diffOfAngles.getDouble())*10000)/10000;
+    std::cout << "The dot product of these two complex numbers is: " << dotProduct << std::endl;
+    if(dotProduct == 0)
+        std::cout << "Thus, these two complex numbers are orthogonal" << std::endl;
+    else
+        std::cout << "Thus, these two complex numbers are not orthogonal" << std::endl;
+
 }

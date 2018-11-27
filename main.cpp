@@ -155,6 +155,8 @@ void getInput(istream& in, memories& a, char *commands[], int count,
                 exit(1);
             }
 
+            //Section B. For addition, subtraction, multiplication, division, power, conjugate.
+
             //if second element of string is equals sign, go this path (ex. F=G+H, F=G'')
             if (userInput[1]=='=')
             {
@@ -199,7 +201,14 @@ void getInput(istream& in, memories& a, char *commands[], int count,
                     }
                 }
             }
-            //if a command preceeds the expression (ex. Let F=2X+4)
+            else if(userInput[1]=='|')
+            {
+                char e,f;
+                e = toupper(userInput[0]);// takes initial element as variable for poly a
+                f = toupper(userInput[2]);
+                a.orthogonality(e-65,f-65);
+            }
+            //if a command preceeds the expression (ex. Let F=2X+4, print, load etc)
             else
             {
                 std:: string temp_str = "";
@@ -240,7 +249,7 @@ void getInput(istream& in, memories& a, char *commands[], int count,
             }
         }
     }
-    //if there are arguments in the command line
+    //if there are arguments in the command line.
     else
     {
         string filename;
@@ -304,7 +313,7 @@ void getInput(istream& in, memories& a, char *commands[], int count,
 
 void recordFile(std::string filename, string userInput)
 { // Saves current expression library to file while checking for existing file
-    cout << "Write Fired" << endl;
+    cout << "Your inputs are being recorded" << endl;
     ofstream out;
     std::ifstream in;
 
@@ -330,7 +339,7 @@ void executeFile(string filename, string &userInput, int &count)
 
     for(int i = 0; i < count; i++)
     {
-        getline(in, line);
+        getline(in, line); //throw away lines before count
     }
     getline(in, userInput);
     count++;

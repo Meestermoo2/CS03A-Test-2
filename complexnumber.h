@@ -22,6 +22,7 @@ class complexNumber : public mixedNumber
         mixedNumber getReal() const;
         mixedNumber getImaginary() const;
         mixedNumber magnitude() const;
+        mixedNumber angle() const;
         complexNumber conjugate() const;
 
         void setValue(const mixedNumber realPart, const mixedNumber imaginaryPart);

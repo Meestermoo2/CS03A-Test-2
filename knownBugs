@@ -6,7 +6,7 @@ e.g (cout << c+d << endl)
 - 3 4/5 + 4i should result in error
 - need to scrap bad input
 - magnitude evaluates to integer
-- formatting
+- formatting output
 - wexit with nothing after causes to save a name with the last input
 = throw an error if input goes outside data storage size
 = throw if unknown command is entered
@@ -14,3 +14,4 @@ e.g (cout << c+d << endl)
 
 //Features to add
 - letting one variable equal another
+- formatting output
