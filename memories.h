@@ -1,6 +1,6 @@
 #ifndef MEMORIES_H
 #define MEMORIES_H
-#include "complexNumber.h"
+#include "complexnumber.h"
 #include <map>
 
 enum memories_ERRORS {INVALID_INPUT};
@@ -15,6 +15,8 @@ class memories
         memories();
         ~memories();
 
+        complexNumber& operator[] (const char index);
+
         void choice(const std::string &input, const std::string &argument="", bool saved = false);
         void clearLibrary();
         void display();
@@ -26,6 +28,7 @@ class memories
         void power(const int index, const int arg1, const int arg2);
         void conjugate(const int index, const int arg1);
         void orthogonality(const int arg1, const int arg2);
+
 
         friend
         std::ostream& operator<<(std::ostream& out, memories &m);

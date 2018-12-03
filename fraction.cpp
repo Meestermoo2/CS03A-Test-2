@@ -26,7 +26,7 @@ fraction::fraction(const double &other)
 {   //Turns double into a string, which is divided into two parts (whole.fraction)
     std::string wholePart, fractionPart;
     std::stringstream ss;
-    ss<<std::fixed; // this takes care of scientific notation (2.3232232e-23)
+    ss/*<<std::setprecision(2)*/ <<std::fixed; // this takes care of scientific notation (2.3232232e-23)
     ss<<other;
 
     // This operation turns the double into a string
@@ -65,6 +65,8 @@ bool fraction::allDecimalsTheSame(const std::string &fracPart)
     bool yes = true;
     for(int i = 1; yes && i < fracPart.size(); ++i)
         yes = (fracPart[0] == fracPart[i]);
+    if((fracPart[1] == 0)&&(fracPart.find_first_not_of("0.") != std::string::npos))
+            return false;
     return yes;
 }
 

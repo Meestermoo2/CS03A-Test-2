@@ -32,8 +32,6 @@ std::istream& operator>>(std::istream& in, memories &m)
         ss.clear();
 
     }
-
-
     return in;
 
 }

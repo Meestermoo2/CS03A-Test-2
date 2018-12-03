@@ -4,6 +4,7 @@
 #include <fstream>
 #include <cmath>
 #include <sstream>
+#include <iomanip>
 
 enum fraction_ERRORS {DIVBYZERO, INVALIDFRACTION};
 

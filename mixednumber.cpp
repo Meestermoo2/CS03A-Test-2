@@ -1,4 +1,4 @@
-#include "mixedNumber.h"
+#include "mixednumber.h"
 
 mixedNumber::mixedNumber()
 {

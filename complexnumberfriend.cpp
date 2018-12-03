@@ -1,4 +1,4 @@
-#include "complexNumber.h"
+#include "complexnumber.h"
 #include <complex>
 
 std::ostream& operator<<(std::ostream &out, complexNumber&c)
@@ -41,6 +41,9 @@ std::istream& operator>>(std::istream &in, complexNumber&c)
     }
     else//Let's assume everything else is a file (for now)
     {
+        while (in.peek() == ' ')
+            in.get();
+
         char op; //used to contain operators
 //        std::cout << "buffer :" << in.rdbuf()->in_avail() << std::endl;
 

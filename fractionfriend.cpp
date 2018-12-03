@@ -102,9 +102,7 @@ fraction operator-(const fraction &x,const fraction &y)
     std::numeric_limits<int>::max();
     fraction result;
     unsigned int temp1 = x.num*y.denom;
-    cout << temp1 << endl;
     unsigned int temp2 = y.num*x.denom;
-    cout << temp2 << endl;
 
     unsigned int num = temp1 - temp2,
         denom = x.denom * y.denom;

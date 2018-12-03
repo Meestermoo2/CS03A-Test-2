@@ -1,4 +1,4 @@
-#include "mixedNumber.h"
+#include "mixednumber.h"
 
 std::ostream& operator<<( std::ostream &out, const mixedNumber &m)
 {

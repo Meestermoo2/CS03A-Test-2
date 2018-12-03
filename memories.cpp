@@ -156,6 +156,10 @@ void memories::Exit(const std::string &arg, const bool &saved)
     exit(1);
 }
 
+complexNumber &memories::operator[](const char index) {
+    return this->library[index];
+}
+
 void memories::display()
 {
     for(unsigned int i = 0; i < 26; ++i)
